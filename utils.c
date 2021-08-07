@@ -33,22 +33,22 @@ int		ft_isdigit(int c)
 
 int ft_free_lst(char **lst)
 {
-    if (lst)
-        while (lst)
-        {
-            free(*lst);
-            lst++;
-        }
-    return (0);
+	if (lst)
+		while (lst)
+		{
+			free(*lst);
+			lst++;
+		}
+	return (0);
 }
 
 int ft_free(char **lst, int *num)
 {
-    if (num)
-    {
-        free(num);
-    }
-    ft_free_lst(lst);
-    return (-1);
+	if (num)
+	{
+		free(num);
+	}
+	ft_free_lst(lst);
+	return (-1);
 }
 

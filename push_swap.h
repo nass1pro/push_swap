@@ -19,6 +19,7 @@ typedef struct       s_st
     int     first;
     int     end;
     int     len;
+    int     len_max;
 }           t_st;
 
 int				ft_atoi(const char *str);
