@@ -12,70 +12,77 @@
 
 #include "push_swap.h"
 
-void	*swap_s(t_st *s)
+int	swap_s(t_st *s)
 {
-	int tmp;
+	size_t tmp;
 	if (s->len > 1)
 	{
 		tmp = s->stack[0];
 		s->stack[0] = s->stack[1];
 		s->stack[1] = tmp;
 	}
-	return ;
+	return 0;
 }
 
-void	*swap_pa(t_st *a, t_st *b)
+int	swap_pa(t_st *a, t_st *b)
 {
-	int	i;
+	size_t i = a->len;
 
+	fprintf(stderr,"%d ---", b->stack[2]);
 	if (b->len == 0)
-		return ;
-	b->len--;
-	a->first = b->first;
-	a->len++;
-	i = a->len;
-	while (i > 0)
 	{
-		a->stack[i + 1] = a->stack[i];
-		i--;
+		return 1;
 	}
-	i = b->len;
-	while (i > 0)
+	else
 	{
-		b->stack[i + 1] = b->stack [i];
-		i--;
+		while(i > 0)
+		{
+			a->stack[i - 1] = a->stack[i];
+			i--;
+		}
+		a->stack[0] = b->first;
+		while (i < b->len)
+		{
+			b->stack[i] = b->stack[i + 1];
+			i++;
+		}
+		b->len--;
+		a->len++;
 	}
-	b->first = b->stack[0];
-	a->stack[0] = a->first;
+	return 0;
 }
 
 
-void	*swap_reverse_rotate(t_st *s)
+int	swap_reverse_rotate(t_st *s)
 {
-	int	i;
+	size_t	i;
 
 	i = s->len;
-	s->first = s->stack[len];
+	// printf("%d\n", s->len);
+	s->first = s->stack[s->len - 1];
 	while (i > 0)
 	{
-		s->stack[i + 1] = s->stack[i];
+		s->stack[i] = s->stack[i - 1];
 		i--;
 	}
-	s->stack[0] = s->stack[first];
+	s->stack[0] = s->first;
+	return 0;
 }
 
-void	*swap_rotate(t_st *s)
+int	swap_rotate(t_st *s)
 {
-	int i;
+	size_t i;
 
 	i = 0;
 
 	s->first = s->stack[1];
+	// printf("%d\n", s->end);
 	s->end = s->stack[0];
 	while (i < s->len)
 	{
 		s->stack[i] = s->stack[i + 1];
 		i++;
 	}
-	s->stack[0] = s->end;
+	s->stack[i - 1] = s->end;
+	return 0;
 }

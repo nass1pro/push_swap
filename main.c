@@ -37,7 +37,7 @@ static t_st *init_stack_list(char **a, int ac)
 
 	i = 1;
 	stack_a = malloc(sizeof(t_st) * 1);
-	stack_a->stack = malloc(sizeof(int) * (ac - 1));
+	stack_a->stack = malloc(sizeof(int) * ac);
 	if (!stack_a || !stack_a->stack)
 	{
 		ft_free(NULL, stack_a->stack);
@@ -65,9 +65,10 @@ static t_st *init_stack(char **lst)
 
 	i = 0;
 	len = 0;
-
+	fprintf(stderr,"len_max %zu /n", len);
 	while (lst[len] != NULL)
 		len++;
+	
 	stack_a = malloc(sizeof(t_st) * 1);
 	stack_a->stack = malloc(sizeof(int) * len);
 	if (!stack_a || !stack_a->stack)
@@ -97,7 +98,7 @@ int main(int ac, char **av)
 {
 	char	**lst;
 	t_st	*stack_a;
-	int i = 1;
+	size_t	i = 1;
 	lst = NULL;
 
 	stack_a = NULL;
@@ -115,7 +116,7 @@ int main(int ac, char **av)
 	}
 	else
 	{
-		while (i <= ac - 1)
+		while (i <= (size_t)ac - 1)
 		{
 			if (ft_verif(av[i]) == -1)
 				return (-1);
@@ -124,11 +125,34 @@ int main(int ac, char **av)
 		stack_a = init_stack_list(av, ac);
 		ft_free_lst(lst);
 	}
+	// i = 0;
+	// while (i < stack_a->len)
+	// {
+	// 	printf("%d \n", stack_a->stack[i]);
+	// 	i++;
+	// }
+	t_st *stack_b;
+	stack_b = malloc(sizeof(t_st));
+	stack_b->stack = malloc(sizeof(int) * ac);
 	i = 0;
-	while (i < stack_a->len)
+	stack_b->stack[0] = 17;
+	stack_b->len = 1;
+	stack_b->len_max = 4;
+	stack_b->first = 17;
+	
+	// swap_pa(stack_a, stack_b);
+	swap_pa(stack_b, stack_a);
+	i = 0;
+	while (i <= stack_b->len)
 	{
-		printf("%d \n", stack_a->stack[i]);
+		printf("stack a =  %d \n", stack_a->stack[i]);
+		// printf("stack b = %d \n", stack_b->stack[0]);
 		i++;
 	}
+	// printf("%d \n", stack_b->stack[0]);
+	free(stack_b->stack);
+	free(stack_a->stack);
+	free(stack_b);
+	free(stack_a);
 	return(0);
 }

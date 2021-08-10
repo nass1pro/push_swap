@@ -15,11 +15,11 @@
 
 typedef struct       s_st
 {
-    int     *stack;
-    int     first;
-    int     end;
-    int     len;
-    int     len_max;
+    int         *stack;
+    int         first;
+    int         end;
+    size_t      len;
+    size_t      len_max;
 }           t_st;
 
 int				ft_atoi(const char *str);
@@ -32,6 +32,7 @@ size_t	        ft_strlen(const char *str);
 int		        ft_isdigit(int c);
 
 // swap 
-
-t_st *swap_s(t_st *s);
-
+int	swap_rotate(t_st *s);
+int	swap_reverse_rotate(t_st *s);
+int	swap_pa(t_st *a, t_st *b);
+int	swap_s(t_st *s);
