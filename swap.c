@@ -27,7 +27,8 @@ int	swap_s(t_st *s)
 int	swap_pa(t_st *a, t_st *b)
 {
 	size_t i = a->len;
-	// fprintf(stderr, "a->len = %zu", a->len);
+	// int tmp = 0;
+	printf( "b->stack[0] = %d \n", b->stack[0]);
 
 	
 	if (b->len == 0)
@@ -38,16 +39,22 @@ int	swap_pa(t_st *a, t_st *b)
 	{
 		while(i > 0)
 		{
-			a->stack[i - 1] = a->stack[i];
+			printf("%zu\n", i);
+			a->stack[i + 1] =  a->stack[i];
+			a->stack[i] = a->stack[i - 1];
 			i--;
 		}
 		a->stack[0] = b->first;
-		while (i < b->len - 1)
+		while (i < b->len)
 		{
 			b->stack[i] = b->stack[i + 1];
+			b->stack[i - 1] = b->stack[i];
 			i++;
 		}
-		
+		printf( "b->stack[0] = %d \n", b->stack[0]);
+		a->stack[0] = b->stack[0];
+		b->stack[0] = 0;
+		b->first = b->stack[1];
 		b->len--;
 		a->len++;
 	}
@@ -103,13 +110,15 @@ int	swap_pb(t_st *b, t_st *a)
 	{
 		while(i > 0)
 		{
-			b->stack[i - 1] = b->stack[i];
+			b->stack[i + 1] =  b->stack[i];
+			b->stack[i] = b->stack[i - 1];
 			i--;
 		}
 		b->stack[0] = a->first;
-		while (i < a->len - 1)
+		while (i < a->len)
 		{
 			a->stack[i] = a->stack[i + 1];
+			a->stack[i - 1] = a->stack[i];
 			i++;
 		}
 		a->len--;
