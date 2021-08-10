@@ -12,23 +12,70 @@
 
 #include "push_swap.h"
 
-t_st *swap_s(t_st *s)
+void	*swap_s(t_st *s)
 {
-    int tmp;
-    if (s->len > 1)
-    {
-        tmp = s->stack[0];
-        s->stack[0] = s->stack[1];
-        s->stack[1] = tmp;
-    }
-    return (s);
+	int tmp;
+	if (s->len > 1)
+	{
+		tmp = s->stack[0];
+		s->stack[0] = s->stack[1];
+		s->stack[1] = tmp;
+	}
+	return ;
 }
 
-t_st *swap_pa(t_st *a, t_st *b)
+void	*swap_pa(t_st *a, t_st *b)
 {
-    int tmp;
-    if (!b->stack)
+	int	i;
 
-    tmp = b->stack[1];
-    a-stack
+	if (b->len == 0)
+		return ;
+	b->len--;
+	a->first = b->first;
+	a->len++;
+	i = a->len;
+	while (i > 0)
+	{
+		a->stack[i + 1] = a->stack[i];
+		i--;
+	}
+	i = b->len;
+	while (i > 0)
+	{
+		b->stack[i + 1] = b->stack [i];
+		i--;
+	}
+	b->first = b->stack[0];
+	a->stack[0] = a->first;
+}
+
+
+void	*swap_reverse_rotate(t_st *s)
+{
+	int	i;
+
+	i = s->len;
+	s->first = s->stack[len];
+	while (i > 0)
+	{
+		s->stack[i + 1] = s->stack[i];
+		i--;
+	}
+	s->stack[0] = s->stack[first];
+}
+
+void	*swap_rotate(t_st *s)
+{
+	int i;
+
+	i = 0;
+
+	s->first = s->stack[1];
+	s->end = s->stack[0];
+	while (i < s->len)
+	{
+		s->stack[i] = s->stack[i + 1];
+		i++;
+	}
+	s->stack[0] = s->end;
 }

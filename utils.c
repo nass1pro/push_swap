@@ -26,29 +26,29 @@ int		ft_isdigit(int c)
 {
 	if (c >= 48 && c <= 57)
 		return (1);
-    if (c == '\0')
-        return (1);
+	if (c == '\0')
+		return (1);
 	return (0);
 }
 
 int ft_free_lst(char **lst)
 {
-    if (lst)
-        while (lst)
-        {
-            free(*lst);
-            lst++;
-        }
-    return (0);
+	if (lst)
+		while (lst)
+		{
+			free(*lst);
+			lst++;
+		}
+	return (0);
 }
 
 int ft_free(char **lst, int *num)
 {
-    if (num)
-    {
-        free(num);
-    }
-    ft_free_lst(lst);
-    return (-1);
+	if (num)
+	{
+		free(num);
+	}
+	ft_free_lst(lst);
+	return (-1);
 }
 

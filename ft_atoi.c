@@ -13,12 +13,8 @@
 static int		ft_fneg(const char *str)
 {
 	int			i;
-	int			f;
-	int			n;
 
-	n = 1;
 	i = 0;
-	f = 0;
 	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
 			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
