@@ -36,3 +36,5 @@ int	swap_rotate(t_st *s);
 int	swap_reverse_rotate(t_st *s);
 int	swap_pa(t_st *a, t_st *b);
 int	swap_s(t_st *s);
+
+int	swap_pb(t_st *b, t_st *a);

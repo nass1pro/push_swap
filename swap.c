@@ -27,8 +27,9 @@ int	swap_s(t_st *s)
 int	swap_pa(t_st *a, t_st *b)
 {
 	size_t i = a->len;
+	// fprintf(stderr, "a->len = %zu", a->len);
 
-	fprintf(stderr,"%d ---", b->stack[2]);
+	
 	if (b->len == 0)
 	{
 		return 1;
@@ -41,14 +42,16 @@ int	swap_pa(t_st *a, t_st *b)
 			i--;
 		}
 		a->stack[0] = b->first;
-		while (i < b->len)
+		while (i < b->len - 1)
 		{
 			b->stack[i] = b->stack[i + 1];
 			i++;
 		}
+		
 		b->len--;
 		a->len++;
 	}
+	// printf("len a = %zu\nlen b = %zu \n", a->len, b->len);
 	return 0;
 }
 
@@ -84,5 +87,34 @@ int	swap_rotate(t_st *s)
 		i++;
 	}
 	s->stack[i - 1] = s->end;
+	return 0;
+}
+
+
+int	swap_pb(t_st *b, t_st *a)
+{
+	size_t i = b->len;
+
+	if (a->len == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		while(i > 0)
+		{
+			b->stack[i - 1] = b->stack[i];
+			i--;
+		}
+		b->stack[0] = a->first;
+		while (i < a->len - 1)
+		{
+			a->stack[i] = a->stack[i + 1];
+			i++;
+		}
+		a->len--;
+		b->len++;
+	}
+	// printf("len a = %zu\nlen b = %zu \n", a->len, b->len);
 	return 0;
 }
