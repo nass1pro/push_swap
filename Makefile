@@ -10,7 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= main.c utils.c ft_split.c ft_atoi.c swap.c
+SRCS			= main.c utils.c ft_split.c ft_atoi.c swap.c \
+					test.c
 
 OBJS			= $(SRCS:.c=.o)
 

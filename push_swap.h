@@ -38,3 +38,7 @@ int	swap_pa(t_st *a, t_st *b);
 int	swap_s(t_st *s);
 
 int	swap_pb(t_st *b, t_st *a);
+
+
+void test_stack(t_st *stack_a, t_st *stack_b);
+void visual_stack(t_st *stack_a, t_st *stack_b);

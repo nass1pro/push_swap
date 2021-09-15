@@ -99,10 +99,11 @@ int main(int ac, char **av)
 {
 	char	**lst;
 	t_st	*stack_a;
-	size_t	i = 1;
+	size_t	i;
 	lst = NULL;
 
 	stack_a = NULL;
+	i = 1;
 	if (ac < 2)
 		return(-1);
 	if (ac == 2)
@@ -112,7 +113,6 @@ int main(int ac, char **av)
 			return (1);
 		}
 		lst = ft_split(av[1], ' ');
-		i = 0;
 		stack_a = init_stack(lst);
 	}
 	else
@@ -131,36 +131,8 @@ int main(int ac, char **av)
 	stack_b->stack = malloc(sizeof(int) * ac);
 	i = 0;
 	stack_b->len = 0;
-	stack_b->len_max = 5;
-	// fprintf(stderr,"%d /n", stack_b->stack[0]);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-
-	// printf("len stack A  ---> %zu \n", stack_a->len);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-	i = 0;
-	printf("pb \n");
-	while (i < stack_a->len_max )
-	{
-		printf("stack a =  %d \t stack b =  %d \n", stack_a->stack[i], stack_b->stack[i]);
-		i++;
-	}
-	printf("pa \n\n");
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);	
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);
-	i = 0;
-	// printf("len_max A : %zu \n", stack_a->len_max);
-	while (i < stack_a->len_max)
-	{
-		printf("stack a =  %d \t stack b =  %d \n", stack_a->stack[i], stack_b->stack[i]);
-		// printf("len a dans pa %d\n" ,stack_a->first);
-		i++;
-	}
+	stack_b->len_max = stack_a->len_max;
+	visual_stack(stack_a, stack_b);
 	free(stack_b->stack);
 	free(stack_a->stack);
 	free(stack_b);
