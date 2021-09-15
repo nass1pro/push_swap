@@ -26,39 +26,45 @@ int	swap_s(t_st *s)
 
 int	swap_pa(t_st *a, t_st *b)
 {
-	size_t i = a->len;
-	// int tmp = 0;
-	printf( "b->stack[0] = %d \n", b->stack[0]);
+	size_t i = 1;
+	int tmp = 0;
 
-	
 	if (b->len == 0)
 	{
 		return 1;
 	}
 	else
 	{
+		i = a->len;
 		while(i > 0)
 		{
-			printf("%zu\n", i);
-			a->stack[i + 1] =  a->stack[i];
+			tmp = a->stack[i];
 			a->stack[i] = a->stack[i - 1];
+			a->stack[i - 1] = tmp;
 			i--;
 		}
-		a->stack[0] = b->first;
+		printf("%d \n", a->stack[0]);
+		a->stack[0] = b->stack[0];
+		i = 0;
 		while (i < b->len)
 		{
-			b->stack[i] = b->stack[i + 1];
-			b->stack[i - 1] = b->stack[i];
+			tmp = b->stack[i];
+			b->stack[i] = b->stack[i+1];
+			b->stack[i+1] = tmp;
 			i++;
 		}
-		printf( "b->stack[0] = %d \n", b->stack[0]);
-		a->stack[0] = b->stack[0];
-		b->stack[0] = 0;
-		b->first = b->stack[1];
+
+		// printf("a first %d\n", a->first );
+		// b->stack[0] = a->first;
+		b->first = b->stack[0];
+		a->first = a->stack[0];
 		b->len--;
 		a->len++;
+		i = b->len;
+		while(i++ <= b->len_max)
+			b->stack[i] = 0;
 	}
-	// printf("len a = %zu\nlen b = %zu \n", a->len, b->len);
+	// printf("len b dans pa %d\n" ,  b->first);
 	return 0;
 }
 
@@ -100,7 +106,8 @@ int	swap_rotate(t_st *s)
 
 int	swap_pb(t_st *b, t_st *a)
 {
-	size_t i = b->len;
+	size_t i = 1;
+	int tmp = 0;
 
 	if (a->len == 0)
 	{
@@ -108,22 +115,32 @@ int	swap_pb(t_st *b, t_st *a)
 	}
 	else
 	{
+		i = b->len;
 		while(i > 0)
 		{
-			b->stack[i + 1] =  b->stack[i];
+			tmp = b->stack[i];
 			b->stack[i] = b->stack[i - 1];
+			b->stack[i - 1] = tmp;
 			i--;
 		}
-		b->stack[0] = a->first;
+		i = 0;
+		b->stack[0] = a->stack[0];
 		while (i < a->len)
 		{
-			a->stack[i] = a->stack[i + 1];
-			a->stack[i - 1] = a->stack[i];
+			tmp = a->stack[i];
+			a->stack[i] = a->stack[i+1];
+			a->stack[i+1] = tmp;
+			// a->stack[i] = a->stack[i + 1];
 			i++;
 		}
+		b->stack[0] = a->first;
+		a->first = a->stack[0];
+		b->first = b->stack[0];
 		a->len--;
 		b->len++;
+		i = a->len;
+		while(i++ <= a->len_max)
+			a->stack[i] = 0;
 	}
-	// printf("len a = %zu\nlen b = %zu \n", a->len, b->len);
 	return 0;
 }

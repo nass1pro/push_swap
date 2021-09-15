@@ -131,32 +131,36 @@ int main(int ac, char **av)
 	stack_b->stack = malloc(sizeof(int) * ac);
 	i = 0;
 	stack_b->len = 0;
-	stack_b->len_max = 0;
+	stack_b->len_max = 5;
 	// fprintf(stderr,"%d /n", stack_b->stack[0]);
+	swap_pb(stack_b, stack_a);
+	swap_pb(stack_b, stack_a);
+
+	// printf("len stack A  ---> %zu \n", stack_a->len);
 	swap_pb(stack_b, stack_a);
 	swap_pb(stack_b, stack_a);
 	swap_pb(stack_b, stack_a);
 	i = 0;
 	printf("pb \n");
-	while (i < stack_a->len)
+	while (i < stack_a->len_max )
 	{
-		printf("stack a =  %d \n", stack_a->stack[i]);
-		printf("stack b = %d \n", stack_b->stack[0]);
+		printf("stack a =  %d \t stack b =  %d \n", stack_a->stack[i], stack_b->stack[i]);
 		i++;
 	}
-	printf("pa \n");
+	printf("pa \n\n");
 	swap_pa(stack_a, stack_b);
+	swap_pa(stack_a, stack_b);
+	swap_pa(stack_a, stack_b);	
 	swap_pa(stack_a, stack_b);
 	swap_pa(stack_a, stack_b);
 	i = 0;
-	printf("len_max A : %zu \n", stack_a->len_max);
-	while (i < stack_a->len)
+	// printf("len_max A : %zu \n", stack_a->len_max);
+	while (i < stack_a->len_max)
 	{
-		printf("stack a =  %d \n", stack_a->stack[i]);
-		printf("stack b = %d \n", stack_b->stack[i]);
+		printf("stack a =  %d \t stack b =  %d \n", stack_a->stack[i], stack_b->stack[i]);
+		// printf("len a dans pa %d\n" ,stack_a->first);
 		i++;
 	}
-	// printf("%d \n", stack_b->stack[0]);
 	free(stack_b->stack);
 	free(stack_a->stack);
 	free(stack_b);
