@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	swap_s(t_st *s)
+int	ft_swap_s(t_st *s)
 {
 	size_t tmp;
 	if (s->len > 1)
@@ -24,7 +24,7 @@ int	swap_s(t_st *s)
 	return 0;
 }
 
-int	swap_pa(t_st *a, t_st *b)
+int	ft_swap_pa(t_st *a, t_st *b)
 {
 	size_t i = 1;
 	int tmp = 0;
@@ -64,7 +64,7 @@ int	swap_pa(t_st *a, t_st *b)
 }
 
 
-int	swap_reverse_rotate(t_st *s)
+int	ft_swap_reverse_rotate(t_st *s)
 {
 	size_t	i;
 
@@ -79,7 +79,7 @@ int	swap_reverse_rotate(t_st *s)
 	return 0;
 }
 
-int	swap_rotate(t_st *s)
+int	ft_swap_rotate(t_st *s)
 {
 	size_t i;
 
@@ -97,7 +97,7 @@ int	swap_rotate(t_st *s)
 }
 
 
-int	swap_pb(t_st *b, t_st *a)
+int	ft_swap_pb(t_st *b, t_st *a)
 {
 	size_t i = 1;
 	int tmp = 0;

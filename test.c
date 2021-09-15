@@ -13,11 +13,11 @@ void visual_stack(t_st *stack_a, t_st *stack_b)
 void test_stack(t_st *stack_a, t_st *stack_b)
 {
     size_t i;
-    swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
-	swap_pb(stack_b, stack_a);
+    ft_swap_pb(stack_b, stack_a);
+	ft_swap_pb(stack_b, stack_a);
+	ft_swap_pb(stack_b, stack_a);
+	ft_swap_pb(stack_b, stack_a);
+	ft_swap_pb(stack_b, stack_a);
 	i = 0;
 	printf("pb \n");
 	while (i < stack_a->len_max )
@@ -26,11 +26,11 @@ void test_stack(t_st *stack_a, t_st *stack_b)
 		i++;
 	}
 	printf("pa \n\n");
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);	
-	swap_pa(stack_a, stack_b);
-	swap_pa(stack_a, stack_b);
+	ft_swap_pa(stack_a, stack_b);
+	ft_swap_pa(stack_a, stack_b);
+	ft_swap_pa(stack_a, stack_b);	
+	ft_swap_pa(stack_a, stack_b);
+	ft_swap_pa(stack_a, stack_b);
 	i = 0;
 	while (i < stack_a->len_max)
 	{

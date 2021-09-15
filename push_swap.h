@@ -12,6 +12,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 typedef struct       s_st
 {
@@ -31,14 +32,22 @@ int             ft_free_lst(char **lst);
 size_t	        ft_strlen(const char *str);
 int		        ft_isdigit(int c);
 
-// swap 
-int	swap_rotate(t_st *s);
-int	swap_reverse_rotate(t_st *s);
-int	swap_pa(t_st *a, t_st *b);
-int	swap_s(t_st *s);
 
-int	swap_pb(t_st *b, t_st *a);
+// init_stack.c
+t_st            *ft_init_stack_b(t_st *stack_a);
+t_st            *ft_init_stack(char **lst);
+t_st            *ft_init_stack_list(char **a, int ac);
+void            ft_free_stack(t_st *a);
+t_st            *ft_alloc_stack(t_st *st, t_st *a);
 
 
+// swap.c
+int	            ft_swap_rotate(t_st *s);
+int	            ft_swap_reverse_rotate(t_st *s);
+int	            ft_swap_pa(t_st *a, t_st *b);
+int             ft_swap_s(t_st *s);
+int	            ft_swap_pb(t_st *b, t_st *a);
+
+//test.c delete file when close the project on intra 
 void test_stack(t_st *stack_a, t_st *stack_b);
 void visual_stack(t_st *stack_a, t_st *stack_b);

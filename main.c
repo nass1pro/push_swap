@@ -10,8 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
+
+static int ft_verif_sort(t_st *a)
+{
+	size_t i;
+	size_t v;
+	size_t t;
+
+	i = 0;
+	v = 1;
+	t = 0;
+	while (v < a->len_max)
+	{
+		if (a->stack[i] <= a->stack[v])
+			t++;
+		i++;
+		v++;
+	}
+	if (t == i)
+		return -1;
+	return 0;
+}
 
 static int ft_verif(char *str)
 {
@@ -30,90 +50,25 @@ static int ft_verif(char *str)
 	return(0);
 }
 
-static t_st *init_stack_list(char **a, int ac)
-{
-	int	i;
-	t_st	*stack_a;
-
-	i = 1;
-	stack_a = malloc(sizeof(t_st) * 1);
-	stack_a->stack = malloc(sizeof(int) * ac);
-	if (!stack_a || !stack_a->stack)
-	{
-		ft_free(NULL, stack_a->stack);
-		return (NULL);
-	}
-	while(i <= (ac - 1))
-	{
-		if (i == 1)
-		{
-			stack_a->first = ft_atoi(a[i]);
-		}
-		stack_a->stack[i - 1] = ft_atoi(a[i]);
-		i++;
-	}
-	stack_a->end = stack_a->stack[i - 1];
-	stack_a->len = ac - 1;
-	stack_a->len_max = ac - 1;
-	return(stack_a);
-}
-
-static t_st *init_stack(char **lst)
-{
-	size_t	i;
-	size_t	len;
-	t_st	*stack_a;
-
-	i = 0;
-	len = 0;
-	// 
-	while (lst[len] != NULL)
-	{
-		len++;
-	}
-		
-
-	
-	stack_a = malloc(sizeof(t_st) * 1);
-	stack_a->stack = malloc(sizeof(int) * len);
-	if (!stack_a || !stack_a->stack)
-	{
-		ft_free(lst, stack_a->stack);
-		return (NULL);
-	}
-	i = 0;
-	
-	while(i < len)
-	{
-		stack_a->stack[i] = ft_atoi(lst[i]);
-		i++;
-	}
-	stack_a->first = stack_a->stack[0];
-	stack_a->end = len;
-	stack_a->len = len;
-	stack_a->len_max = len;
-	return(stack_a);
-}
-
 int main(int ac, char **av)
 {
 	char	**lst;
 	t_st	*stack_a;
 	size_t	i;
+	t_st 	*stack_b;
+	
 	lst = NULL;
-
 	stack_a = NULL;
+	stack_b = NULL;
 	i = 1;
 	if (ac < 2)
 		return(-1);
 	if (ac == 2)
 	{
 		if (ft_verif(av[1]) == -1)
-		{
 			return (1);
-		}
 		lst = ft_split(av[1], ' ');
-		stack_a = init_stack(lst);
+		stack_a = ft_init_stack(lst);
 	}
 	else
 	{
@@ -123,19 +78,22 @@ int main(int ac, char **av)
 				return (-1);
 			i++;
 		}
-		stack_a = init_stack_list(av, ac);
+		stack_a = ft_init_stack_list(av, ac);	
 		ft_free_lst(lst);
 	}
-	t_st *stack_b;
-	stack_b = malloc(sizeof(t_st));
-	stack_b->stack = malloc(sizeof(int) * ac);
-	stack_b->len = 0;
-	stack_b->len_max = stack_a->len_max;
-	test_stack(stack_a, stack_b);
-	visual_stack(stack_a, stack_b);
-	free(stack_b->stack);
-	free(stack_a->stack);
-	free(stack_b);
-	free(stack_a);
+	
+	if (ft_verif_sort(stack_a) == -1)
+	{
+		write(1, "OK\n", 3);
+		ft_free_stack(stack_a);
+		return 0;
+	}
+	stack_b = ft_init_stack_b(stack_a);
+	if (!stack_b)
+		return (-1);
+	// test_stack(stack_a, stack_b);
+	// visual_stack(stack_a, stack_b);
+	ft_free_stack(stack_b);
+	ft_free_stack(stack_a);
 	return(0);
 }
