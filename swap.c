@@ -43,7 +43,6 @@ int	swap_pa(t_st *a, t_st *b)
 			a->stack[i - 1] = tmp;
 			i--;
 		}
-		printf("%d \n", a->stack[0]);
 		a->stack[0] = b->stack[0];
 		i = 0;
 		while (i < b->len)
@@ -53,9 +52,6 @@ int	swap_pa(t_st *a, t_st *b)
 			b->stack[i+1] = tmp;
 			i++;
 		}
-
-		// printf("a first %d\n", a->first );
-		// b->stack[0] = a->first;
 		b->first = b->stack[0];
 		a->first = a->stack[0];
 		b->len--;
@@ -64,7 +60,6 @@ int	swap_pa(t_st *a, t_st *b)
 		while(i++ <= b->len_max)
 			b->stack[i] = 0;
 	}
-	// printf("len b dans pa %d\n" ,  b->first);
 	return 0;
 }
 
@@ -74,7 +69,6 @@ int	swap_reverse_rotate(t_st *s)
 	size_t	i;
 
 	i = s->len;
-	// printf("%d\n", s->len);
 	s->first = s->stack[s->len - 1];
 	while (i > 0)
 	{
@@ -92,7 +86,6 @@ int	swap_rotate(t_st *s)
 	i = 0;
 
 	s->first = s->stack[1];
-	// printf("%d\n", s->end);
 	s->end = s->stack[0];
 	while (i < s->len)
 	{
@@ -130,7 +123,6 @@ int	swap_pb(t_st *b, t_st *a)
 			tmp = a->stack[i];
 			a->stack[i] = a->stack[i+1];
 			a->stack[i+1] = tmp;
-			// a->stack[i] = a->stack[i + 1];
 			i++;
 		}
 		b->stack[0] = a->first;

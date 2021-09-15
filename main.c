@@ -129,9 +129,9 @@ int main(int ac, char **av)
 	t_st *stack_b;
 	stack_b = malloc(sizeof(t_st));
 	stack_b->stack = malloc(sizeof(int) * ac);
-	i = 0;
 	stack_b->len = 0;
 	stack_b->len_max = stack_a->len_max;
+	test_stack(stack_a, stack_b);
 	visual_stack(stack_a, stack_b);
 	free(stack_b->stack);
 	free(stack_a->stack);
