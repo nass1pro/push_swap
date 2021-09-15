@@ -32,7 +32,6 @@ void len_three(t_st *a)
         write(1, "rra\n", 4);
     }
 }
-
 // void len_five(t_st *a, t_st *b)
 // {
 //     // ft_swap_pa(b, a);
@@ -41,6 +40,5 @@ void len_three(t_st *a)
 //     // ft_swap_pb(a, b);
 //     // if (a->stack[0] > a->stack[a->len])
 //     //     ft_swap_rotate(a);
-    
 //     //j'ai une autre idée :D
 // }
