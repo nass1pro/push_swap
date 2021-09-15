@@ -68,7 +68,11 @@ int main(int ac, char **av)
 		if (ft_verif(av[1]) == -1)
 			return (1);
 		lst = ft_split(av[1], ' ');
+		if (!lst)
+			return -1;
 		stack_a = ft_init_stack(lst);
+		if (!stack_a)
+			return -1;
 	}
 	else
 	{
@@ -78,7 +82,9 @@ int main(int ac, char **av)
 				return (-1);
 			i++;
 		}
-		stack_a = ft_init_stack_list(av, ac);	
+		stack_a = ft_init_stack_list(av, ac);
+		if (!stack_a)
+			return -1;
 		ft_free_lst(lst);
 	}
 	
