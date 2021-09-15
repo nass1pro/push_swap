@@ -38,7 +38,7 @@ t_st            *ft_init_stack_b(t_st *stack_a);
 t_st            *ft_init_stack(char **lst);
 t_st            *ft_init_stack_list(char **a, int ac);
 void            ft_free_stack(t_st *a);
-t_st            *ft_alloc_stack(t_st *st, t_st *a);
+t_st            *ft_alloc_stack(t_st *st, int len);
 
 
 // swap.c
