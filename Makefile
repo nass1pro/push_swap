@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 SRCS			= main.c utils.c ft_split.c ft_atoi.c swap.c \
-					test.c init_stack.c
+					test.c init_stack.c sort.c
 
 OBJS			= $(SRCS:.c=.o)
 

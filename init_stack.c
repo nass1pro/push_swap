@@ -45,7 +45,7 @@ t_st *ft_init_stack(char **lst)
 		len++;
 	}
 	stack_a = malloc(sizeof(t_st) * 1);
-	stack_a->stack = malloc(sizeof(int) * len + 1);
+	stack_a->stack = malloc(sizeof(int) * len);
 	if (!stack_a || !stack_a->stack)
 	{
 		ft_free(lst, stack_a->stack);
