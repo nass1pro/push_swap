@@ -42,11 +42,27 @@ t_st            *ft_alloc_stack(t_st *st, int len);
 
 
 // swap.c
+
 int	            ft_swap_rotate(t_st *s);
+int	            ft_swap_rotate_a(t_st *s);
+int	            ft_swap_rotate_b(t_st *s);
+int	            ft_swap_rotate_ab(t_st *a, t_st *b);
+
 int	            ft_swap_reverse_rotate(t_st *s);
+int	            ft_swap_reverse_rotate_a(t_st *s);
+int	            ft_swap_reverse_rotate_b(t_st *s);
+int	            ft_swap_reverse_rotate_ab(t_st *a, t_st *b);
+
 int	            ft_swap_pa(t_st *a, t_st *b);
-int             ft_swap_s(t_st *s);
 int	            ft_swap_pb(t_st *b, t_st *a);
+
+int             ft_swap_s(t_st *s);
+int             ft_swap_sa(t_st *a);
+int             ft_swap_sb(t_st *a);
+int             ft_swap_ss(t_st *a);
+
+
+
 
 //test.c delete file when close the project on intra 
 void test_stack(t_st *stack_a, t_st *stack_b);

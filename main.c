@@ -38,7 +38,6 @@ static int ft_verif(char *str)
 	size_t i;
 
 	i = 0;
-
 	while(i < ft_strlen(str))
 	{
 		if (str[i] == ' ')

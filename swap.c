@@ -12,6 +12,15 @@
 
 #include "push_swap.h"
 
+int	            ft_swap_s_ab(t_st *a, t_st *b)
+{
+	if (ft_swap_s(a))
+		return (1);
+	if (ft_swap_s(b))
+		return (1);
+	return (0);
+}
+
 int	ft_swap_s(t_st *s)
 {
 	size_t tmp;
@@ -20,9 +29,21 @@ int	ft_swap_s(t_st *s)
 		tmp = s->stack[0];
 		s->stack[0] = s->stack[1];
 		s->stack[1] = tmp;
+		return (0);
 	}
-	return 0;
+	return (1);
 }
+
+int ft_swap_sa(t_st *a)
+{
+	return (ft_swap_s(a));
+}
+
+int ft_swap_sb(t_st *a)
+{
+	return (ft_swap_s(a));
+}
+
 
 int	ft_swap_pa(t_st *a, t_st *b)
 {
@@ -79,6 +100,24 @@ int	ft_swap_reverse_rotate(t_st *s)
 	return 0;
 }
 
+int	            ft_swap_reverse_rotate_b(t_st *s)
+{
+	return (ft_swap_reverse_rotate(s));
+}
+
+int	            ft_swap_reverse_rotate_a(t_st *s)
+{
+	return (ft_swap_reverse_rotate(s));
+}
+int	            ft_swap_reverse_rotate_ab(t_st *a, t_st *b)
+{
+	if (ft_swap_reverse_rotate(a))
+		return (1);
+	if (ft_swap_reverse_rotate(b))
+		return (1);
+	return 0;
+}
+
 int	ft_swap_rotate(t_st *s)
 {
 	size_t i;
@@ -96,6 +135,24 @@ int	ft_swap_rotate(t_st *s)
 	return 0;
 }
 
+int	            ft_swap_rotate_b(t_st *s)
+{
+	return (ft_swap_rotate(s));
+}
+
+int	            ft_swap_rotate_a(t_st *s)
+{
+	return (ft_swap_rotate(s));
+}
+
+int	            ft_swap_rotate_ab(t_st *a, t_st *b)
+{
+	if (ft_swap_rotate_a(a))
+		return (1);
+	if (ft_swap_rotate_b(b))
+		return (1);
+	return (0);
+}
 
 int	ft_swap_pb(t_st *b, t_st *a)
 {
