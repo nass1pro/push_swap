@@ -116,7 +116,10 @@ t_st 	*ft_init_index_stack(t_st *s)
 	while(i <= s->len_max)
 	{
 		while(s->stack[j] != s->stack_sorted[i])
-			j++;
+		{
+			if (s->stack_sorted[i] == s->stack_sorted[i + 1])
+				return (NULL);
+		}
 		s->index[i] = j;
 		j = 0;
 		i++;
