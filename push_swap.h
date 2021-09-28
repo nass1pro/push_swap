@@ -23,6 +23,7 @@ typedef struct       s_st
     int         end;
     size_t      len;
     size_t      len_max;
+    int         error;
 }           t_st;
 
 int				ft_atoi(const char *str);

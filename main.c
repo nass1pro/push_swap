@@ -103,7 +103,18 @@ int main(int ac, char **av)
 		return -1;
 	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0, stack_a->len_max - 1);
 	stack_a = ft_init_index_stack(stack_a);
+	if (stack_a->error == 1)
+	{
+		ft_free_stack(stack_b);
+		ft_free_stack(stack_a);
+		return -1;
+	}
 	size_t id = -1;
+	while( ++id  < stack_a->len_max)
+	{
+		printf("%zu index %d = ",id ,stack_a->index[id]);
+		printf(" value %d \n",stack_a->stack_sorted[id]);
+	}
 		
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);

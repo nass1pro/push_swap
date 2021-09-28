@@ -53,6 +53,7 @@ t_st *ft_init_stack(char **lst)
 	stack_a->end = len;
 	stack_a->len = len;
 	stack_a->len_max = len;
+	stack_a->error = 0;
 	return(stack_a);
 }
 
@@ -121,8 +122,12 @@ t_st 	*ft_init_index_stack(t_st *s)
 	{
 		while(s->stack[j] != s->stack_sorted[i])
 		{
-			if (s->stack_sorted[i] == s->stack_sorted[i + 1])
-				return (NULL);
+			if (s->stack_sorted[i] == s->stack_sorted[i + 1] && i < s->len_max)
+			{
+				s->error = 1;
+				return (s);
+			}
+			j++;
 		}
 		s->index[i] = j;
 		j = 0;
@@ -130,3 +135,4 @@ t_st 	*ft_init_index_stack(t_st *s)
 	}
 	return (s);
 }
+
