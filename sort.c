@@ -24,9 +24,7 @@ void ft_len_three(t_st *a)
         ft_swap_sa(a);
     }
     else
-    {
         ft_swap_reverse_rotate_a(a);
-    }
 }
 
 static void ft_five(t_st *a, t_st *b)
@@ -41,15 +39,12 @@ static void ft_five(t_st *a, t_st *b)
     while(b->first > a->stack[i] && i != a->len)
         i++;
     if (i == 1)
-    {
         ft_swap_pa(a, b);
-    }
     else if (i == a->len)
     {
         ft_swap_pa(a, b);
         ft_swap_rotate_a(a);
         ft_five(a, b);
-        return ;
     }
     else
     {
