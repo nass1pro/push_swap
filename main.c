@@ -23,14 +23,12 @@ static int ft_verif_sort(t_st *a)
 	t = 0;
 	while (v < a->len_max)
 	{
-		if (a->stack[i] <= a->stack[v])
-			t++;
+		if (a->stack[i] >= a->stack[v])
+			return 0;
 		i++;
 		v++;
 	}
-	if (t == i)
-		return -1;
-	return 0;
+	return -1;
 }
 
 static int ft_verif(char *str)
@@ -40,7 +38,10 @@ static int ft_verif(char *str)
 	i = 0;
 	while(i < ft_strlen(str))
 	{
+		
 		if (str[i] == ' ')
+			i++;
+		if (str[i] == '-')
 			i++;
 		if (ft_isdigit(str[i]) == 0)
 			return (-1);
@@ -96,8 +97,7 @@ int main(int ac, char **av)
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (-1);
-	// test_stack(stack_a, stack_b);
-	// visual_stack(stack_a, stack_b);
+	len_five(stack_a, stack_b);
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
 	return(0);

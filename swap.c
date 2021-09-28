@@ -51,7 +51,6 @@ int ft_swap_sb(t_st *a)
 	return (0);
 }
 
-
 int	ft_swap_pa(t_st *a, t_st *b)
 {
 	size_t i = 1;
@@ -112,7 +111,7 @@ int	            ft_swap_reverse_rotate_b(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
-	write(1, "rrb\n", 4)
+	write(1, "rrb\n", 4);
 	return (0);
 }
 
@@ -120,7 +119,7 @@ int	            ft_swap_reverse_rotate_a(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
-	write(1, "rra\n", 4)
+	write(1, "rra\n", 4);
 	return (0);
 }
 int	            ft_swap_reverse_rotate_ab(t_st *a, t_st *b)

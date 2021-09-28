@@ -67,7 +67,9 @@ int             ft_swap_ss(t_st *a);
 //test.c delete file when close the project on intra 
 void test_stack(t_st *stack_a, t_st *stack_b);
 void visual_stack(t_st *stack_a, t_st *stack_b);
+void test_five(t_st *a, t_st *b);
 
 // sort.c
 
 void            ft_len_three(t_st *a);
+void            len_five(t_st *a, t_st *b);

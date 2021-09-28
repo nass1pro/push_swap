@@ -9,9 +9,10 @@ t_st *ft_init_stack_list(char **a, int ac)
 
 	i = 1;
     stack_a = NULL;
-	if (!(ft_alloc_stack(stack_a, ac)))
+    stack_a = ft_alloc_stack(stack_a, ac);
+	if (!stack_a)
         return (NULL);
-	while(i <= (ac - 1))
+	while(i <= ac - 1)
 	{
 		if (i == 1)
 		{
@@ -39,7 +40,8 @@ t_st *ft_init_stack(char **lst)
 	{
 		len++;
 	}
-    if (!(ft_alloc_stack(stack_a, len)))
+    stack_a = ft_alloc_stack(stack_a, len);
+    if (!stack_a)
         return (NULL);
 	i = 0;
 	while(i < len)
