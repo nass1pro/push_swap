@@ -88,3 +88,38 @@ void ft_free_stack(t_st *a)
     free(a->stack);
     free(a);
 }
+
+t_st *ft_init_sort_stack(t_st *s)
+{
+	size_t i;
+
+	i = -1;
+	s->stack_sorted = malloc(sizeof(int) * s->len_max);
+	if (!s->stack_sorted)
+		return (NULL);
+	
+	while(++i < s->len_max)
+		s->stack_sorted[i] = s->stack[i];
+	return (s);
+}
+
+t_st 	*ft_init_index_stack(t_st *s)
+{
+	size_t i;
+	size_t j;
+
+	i = 0;
+	j = 0;
+	s->index = malloc(sizeof(int) * s->len_max);
+	if (!s->index)
+		return (NULL);
+	while(i <= s->len_max)
+	{
+		while(s->stack[j] != s->stack_sorted[i])
+			j++;
+		s->index[i] = j;
+		j = 0;
+		i++;
+	}
+	return (s);
+}

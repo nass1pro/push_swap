@@ -20,21 +20,22 @@ static int ft_partition(int *arr, int low, int higth)
     i = low - 1;
     pivot = arr[higth];
     j = low;
-    while(j++ < higth)
+    while(j < higth)
     {
         if (arr[j] < pivot)
         {
             i++;
             arr = ft_swap(arr, i, j);
         }
-    
+        j++;
     }
-   arr =  ft_swap(arr, i + 1, higth);
+    arr =  ft_swap(arr, i + 1, higth);
     return (i + 1);
 }
 
 int *ft_quick_sort(int *arr, int low, int higth)
 {
+
     int part_i;
 
     if (low < higth)

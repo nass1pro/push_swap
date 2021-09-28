@@ -16,6 +16,7 @@
 
 typedef struct       s_st
 {
+    int         *index;
     int         *stack;
     int         *stack_sorted;
     int         first;
@@ -40,6 +41,8 @@ t_st            *ft_init_stack(char **lst);
 t_st            *ft_init_stack_list(char **a, int ac);
 void            ft_free_stack(t_st *a);
 t_st            *ft_alloc_stack(t_st *st, int len);
+t_st            *ft_init_sort_stack(t_st *s);
+t_st            *ft_init_index_stack(t_st *s);
 
 
 // swap.c

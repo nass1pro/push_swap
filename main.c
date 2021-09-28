@@ -97,7 +97,20 @@ int main(int ac, char **av)
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (-1);
-	len_five(stack_a, stack_b);
+	// len_five(stack_a, stack_b);
+	stack_a = ft_init_sort_stack(stack_a);
+	if (!stack_a)
+		return -1;
+	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0, stack_a->len_max - 1);
+	// fprintf(stderr, "iefiberfibjeg");
+	stack_a = ft_init_index_stack(stack_a);
+	size_t id = -1;
+	// while( ++id  < stack_a->len_max)
+	// {
+	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
+	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
+	// }
+		
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
 	return(0);
