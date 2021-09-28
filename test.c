@@ -44,3 +44,11 @@ void test_five(t_st *a, t_st *b)
 	len_five(a, b);
 	visual_stack(a, b);
 }
+
+
+
+// while( ++id  < stack_a->len_max)
+	// {
+	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
+	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
+	// }
