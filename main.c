@@ -16,11 +16,11 @@ static int ft_verif_sort(t_st *a)
 {
 	size_t i;
 	size_t v;
-	size_t t;
+	//size_t t;
 
 	i = 0;
 	v = 1;
-	t = 0;
+	//t = 0;
 	while (v < a->len_max)
 	{
 		if (a->stack[i] >= a->stack[v])
@@ -38,7 +38,7 @@ static int ft_verif(char *str)
 	i = 0;
 	while(i < ft_strlen(str))
 	{
-		
+
 		if (str[i] == ' ')
 			i++;
 		if (str[i] == '-')
@@ -56,7 +56,7 @@ int main(int ac, char **av)
 	t_st	*stack_a;
 	size_t	i;
 	t_st 	*stack_b;
-	
+
 	lst = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -87,7 +87,7 @@ int main(int ac, char **av)
 			return -1;
 		ft_free_lst(lst);
 	}
-	
+
 	if (ft_verif_sort(stack_a) == -1)
 	{
 		write(1, "OK\n", 3);
@@ -115,7 +115,7 @@ int main(int ac, char **av)
 		printf("%zu index %d = ",id ,stack_a->index[id]);
 		printf(" value %d \n",stack_a->stack_sorted[id]);
 	}
-		
+
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
 	return(0);

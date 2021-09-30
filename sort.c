@@ -30,10 +30,10 @@ void ft_len_three(t_st *a)
 static void ft_five(t_st *a, t_st *b)
 {
     size_t i;
-    size_t j;
+    //size_t j;
 
     i = 1;
-    j = 0;
+    //j = 0;
     if (b->stack[0] < b->stack[1])
         return ;
     while(b->first > a->stack[i] && i != a->len)
@@ -59,12 +59,11 @@ static void ft_five(t_st *a, t_st *b)
 
 void len_five(t_st *a, t_st *b)
 {
-    ft_swap_pb(b, a);
+    if (a->len == 5)
+      ft_swap_pb(b, a);
     ft_swap_pb(b, a);
     if (b->stack[0] < b->stack[1])
         ft_swap_sb(b);
     ft_len_three(a);
     ft_five(a, b);
 }
-
-

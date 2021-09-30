@@ -1,3 +1,4 @@
 *.o
 *.sw[a-p]
 push_swap
+push_swap.exe
