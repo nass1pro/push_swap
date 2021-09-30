@@ -87,10 +87,10 @@ t_st    *ft_alloc_stack(t_st *st, int len_max)
 void ft_free_stack(t_st *a)
 {
     free(a->stack);
-	if (a->index)
-		free(a->index);
-	if (a->stack_sorted)
-		free(a->stack_sorted);
+	// if (a->index)
+	// 	free(a->index);
+	// if (a->stack_sorted)
+	// 	free(a->stack_sorted);
     free(a);
 }
 
@@ -135,4 +135,3 @@ t_st 	*ft_init_index_stack(t_st *s)
 	}
 	return (s);
 }
-

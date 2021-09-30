@@ -109,12 +109,18 @@ int main(int ac, char **av)
 		ft_free_stack(stack_a);
 		return -1;
 	}
-	size_t id = -1;
-	while( ++id  < stack_a->len_max)
+	len_five(stack_a, stack_b);
+	// visual_stack(stack_a,stack_b);
+	if (ft_verif_sort(stack_a) == -1)
 	{
-		printf("%zu index %d = ",id ,stack_a->index[id]);
-		printf(" value %d \n",stack_a->stack_sorted[id]);
+		printf("OK");
 	}
+	// size_t id = -1;
+	// while( ++id  < stack_a->len_max)
+	// {
+	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
+	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
+	// }
 		
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
