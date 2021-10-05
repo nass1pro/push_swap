@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/08/07 15:34:39 by nahaddac         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:23:51 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ static int ft_verif_sort(t_st *a)
 {
 	size_t i;
 	size_t v;
-	size_t t;
 
 	i = 0;
 	v = 1;
-	t = 0;
 	while (v < a->len_max)
 	{
 		if (a->stack[i] >= a->stack[v])
@@ -116,7 +114,7 @@ int main(int ac, char **av)
 		printf("OK");
 	}
 	// size_t id = -1;
-	// while( ++id  < stack_a->len_max)
+	// while( ++id < stack_a->len_max)
 	// {
 	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
 	// 	printf(" value %d \n",stack_a->stack_sorted[id]);

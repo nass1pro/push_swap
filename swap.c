@@ -6,13 +6,13 @@
 /*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:57:39 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/08/07 15:08:45 by nahaddac         ###   ########.fr       */
+/*   Updated: 2021/10/05 17:26:51 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	            ft_swap_s_ab(t_st *a, t_st *b)
+int	ft_swap_s_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_s(a))
 		return (1);
@@ -107,7 +107,7 @@ int	ft_swap_reverse_rotate(t_st *s)
 	return 0;
 }
 
-int	            ft_swap_reverse_rotate_b(t_st *s)
+int	ft_swap_reverse_rotate_b(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
@@ -115,14 +115,14 @@ int	            ft_swap_reverse_rotate_b(t_st *s)
 	return (0);
 }
 
-int	            ft_swap_reverse_rotate_a(t_st *s)
+int	ft_swap_reverse_rotate_a(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
 	write(1, "rra\n", 4);
 	return (0);
 }
-int	            ft_swap_reverse_rotate_ab(t_st *a, t_st *b)
+int	ft_swap_reverse_rotate_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_reverse_rotate(a))
 		return (1);
@@ -149,7 +149,7 @@ int	ft_swap_rotate(t_st *s)
 	return 0;
 }
 
-int	            ft_swap_rotate_b(t_st *s)
+int	ft_swap_rotate_b(t_st *s)
 {
 	if (ft_swap_rotate(s))
 		return 1;
@@ -157,7 +157,7 @@ int	            ft_swap_rotate_b(t_st *s)
 	return (0);
 }
 
-int	            ft_swap_rotate_a(t_st *s)
+int	ft_swap_rotate_a(t_st *s)
 {
 	if (ft_swap_rotate(s))
 		return 1;
@@ -165,7 +165,7 @@ int	            ft_swap_rotate_a(t_st *s)
 	return (0);
 }
 
-int	            ft_swap_rotate_ab(t_st *a, t_st *b)
+int	ft_swap_rotate_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_rotate_a(a))
 		return (1);

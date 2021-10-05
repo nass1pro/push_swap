@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 17:24:54 by mkravetz          #+#    #+#             */
+/*   Updated: 2021/10/05 17:25:30 by mkravetz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -8,10 +18,10 @@ t_st *ft_init_stack_list(char **a, int ac)
 	t_st	*stack_a;
 
 	i = 1;
-    stack_a = NULL;
-    stack_a = ft_alloc_stack(stack_a, ac);
+	stack_a = NULL;
+	stack_a = ft_alloc_stack(stack_a, ac);
 	if (!stack_a)
-        return (NULL);
+		return (NULL);
 	while(i <= ac - 1)
 	{
 		if (i == 1)
@@ -35,14 +45,14 @@ t_st *ft_init_stack(char **lst)
 
 	i = 0;
 	len = 0;
-    stack_a = NULL;
+	stack_a = NULL;
 	while (lst[len] != NULL)
 	{
 		len++;
 	}
-    stack_a = ft_alloc_stack(stack_a, len);
-    if (!stack_a)
-        return (NULL);
+	stack_a = ft_alloc_stack(stack_a, len);
+	if (!stack_a)
+		return (NULL);
 	i = 0;
 	while(i < len)
 	{
@@ -61,10 +71,10 @@ t_st *ft_init_stack_b(t_st *a)
 {
 	t_st *stack_b;
 
-    stack_b = NULL;
+	stack_b = NULL;
 	stack_b = ft_alloc_stack(stack_b, a->len_max);
-    if (!stack_b)
-        return (NULL);
+	if (!stack_b)
+		return (NULL);
 	stack_b->len = 0;
 	stack_b->len_max = a->len_max;
 	return (stack_b);
@@ -72,26 +82,26 @@ t_st *ft_init_stack_b(t_st *a)
 
 t_st    *ft_alloc_stack(t_st *st, int len_max)
 {
-    st = malloc(sizeof(t_st));
-    if (st)
-    {
-        st->stack = malloc(sizeof(int) * len_max);
-	    if (!st->stack)
-		    return (NULL);
-    }
-    else
-        return(NULL);
-    return (st);	    
+	st = malloc(sizeof(t_st));
+	if (st)
+	{
+		st->stack = malloc(sizeof(int) * len_max);
+		if (!st->stack)
+			return (NULL);
+	}
+	else
+		return(NULL);
+	return (st);	    
 }
 
 void ft_free_stack(t_st *a)
 {
-    free(a->stack);
+	free(a->stack);
 	// if (a->index)
 	// 	free(a->index);
 	// if (a->stack_sorted)
 	// 	free(a->stack_sorted);
-    free(a);
+	free(a);
 }
 
 t_st *ft_init_sort_stack(t_st *s)
@@ -102,7 +112,7 @@ t_st *ft_init_sort_stack(t_st *s)
 	s->stack_sorted = malloc(sizeof(int) * s->len_max);
 	if (!s->stack_sorted)
 		return (NULL);
-	
+
 	while(++i < s->len_max)
 		s->stack_sorted[i] = s->stack[i];
 	return (s);

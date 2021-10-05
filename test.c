@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/05 17:26:56 by mkravetz          #+#    #+#             */
+/*   Updated: 2021/10/05 17:27:10 by mkravetz         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void visual_stack(t_st *stack_a, t_st *stack_b)
 {
-    size_t i = 0;
-    while (i < stack_a->len)
+	size_t i = 0;
+	while (i < stack_a->len)
 	{
 		printf("stack a =  %d \t stack b =  %d \n", stack_a->stack[i], stack_b->stack[i]);
 		i++;
@@ -13,8 +25,8 @@ void visual_stack(t_st *stack_a, t_st *stack_b)
 
 void test_stack(t_st *stack_a, t_st *stack_b)
 {
-    size_t i;
-    ft_swap_pb(stack_b, stack_a);
+	size_t i;
+	ft_swap_pb(stack_b, stack_a);
 	ft_swap_pb(stack_b, stack_a);
 	ft_swap_pb(stack_b, stack_a);
 	ft_swap_pb(stack_b, stack_a);
@@ -48,7 +60,7 @@ void test_five(t_st *a, t_st *b)
 
 
 // while( ++id  < stack_a->len_max)
-	// {
-	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
-	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
-	// }
+// {
+// 	printf("%zu index %d = ",id ,stack_a->index[id]);
+// 	printf(" value %d \n",stack_a->stack_sorted[id]);
+// }
