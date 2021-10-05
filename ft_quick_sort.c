@@ -33,16 +33,16 @@ static int ft_partition(int *arr, int low, int higth)
     return (i + 1);
 }
 
-int *ft_quick_sort(int *arr, int low, int high)
+int *ft_quick_sort(int *arr, int low, int higth)
 {
 
     int part_i;
 
-    if (low < high)
+    if (low < higth)
     {
-        part_i = ft_partition(arr, low, high);
+        part_i = ft_partition(arr, low, higth);
         ft_quick_sort(arr, low, part_i - 1);
-        ft_quick_sort(arr, part_i + 1, high);
+        ft_quick_sort(arr, part_i + 1, higth);
     }
     return (arr);
 }

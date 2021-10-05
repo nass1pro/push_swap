@@ -40,9 +40,9 @@ t_st *ft_init_stack(char **lst)
 	{
 		len++;
 	}
-  stack_a = ft_alloc_stack(stack_a, len);
-  if (!stack_a)
-    return (NULL);
+    stack_a = ft_alloc_stack(stack_a, len);
+    if (!stack_a)
+        return (NULL);
 	i = 0;
 	while(i < len)
 	{
@@ -61,10 +61,10 @@ t_st *ft_init_stack_b(t_st *a)
 {
 	t_st *stack_b;
 
-  stack_b = NULL;
+    stack_b = NULL;
 	stack_b = ft_alloc_stack(stack_b, a->len_max);
-  if (!stack_b)
-    return (NULL);
+    if (!stack_b)
+        return (NULL);
 	stack_b->len = 0;
 	stack_b->len_max = a->len_max;
 	return (stack_b);
@@ -81,16 +81,16 @@ t_st    *ft_alloc_stack(t_st *st, int len_max)
     }
     else
         return(NULL);
-    return (st);
+    return (st);	    
 }
 
 void ft_free_stack(t_st *a)
 {
     free(a->stack);
-	if (a->index)
-		free(a->index);
-	if (a->stack_sorted)
-		free(a->stack_sorted);
+	// if (a->index)
+	// 	free(a->index);
+	// if (a->stack_sorted)
+	// 	free(a->stack_sorted);
     free(a);
 }
 
@@ -102,7 +102,7 @@ t_st *ft_init_sort_stack(t_st *s)
 	s->stack_sorted = malloc(sizeof(int) * s->len_max);
 	if (!s->stack_sorted)
 		return (NULL);
-
+	
 	while(++i < s->len_max)
 		s->stack_sorted[i] = s->stack[i];
 	return (s);
