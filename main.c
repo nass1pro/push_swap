@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/10/05 17:23:51 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/10/08 11:31:44 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,9 @@ int main(int ac, char **av)
 		ft_free_stack(stack_a);
 		return -1;
 	}
-	len_five(stack_a, stack_b);
-	// visual_stack(stack_a,stack_b);
+	ft_radixsort(stack_a, stack_b);
+//	len_five(stack_a, stack_b);
+	visual_stack(stack_a,stack_b);
 	if (ft_verif_sort(stack_a) == -1)
 	{
 		printf("OK");

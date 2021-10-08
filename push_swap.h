@@ -6,7 +6,7 @@
 /*   By: nahaddac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:40 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/06/23 10:59:43 by nahaddac         ###   ########.fr       */
+/*   Updated: 2021/10/08 10:54:06 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 typedef struct       s_st
 {
-    int         *index;
-    int         *stack;
-    int         *stack_sorted;
-    int         first;
-    int         end;
-    size_t      len;
-    size_t      len_max;
-    int         error;
+	int         *index;
+	int         *stack;
+	int         *stack_sorted;
+	int         first;
+	int         end;
+	size_t      len;
+	size_t      len_max;
+	int         error;
 }           t_st;
 
 int				ft_atoi(const char *str);
@@ -78,6 +78,7 @@ void test_five(t_st *a, t_st *b);
 
 void            ft_len_three(t_st *a);
 void            len_five(t_st *a, t_st *b);
+void			ft_radixsort(t_st *a, t_st *b);
 
 // ft_quick_sort.c
 
