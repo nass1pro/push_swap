@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:24:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/10/20 14:19:30 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:34:41 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ t_st    *ft_alloc_stack(t_st *st, int len_max)
 	st = malloc(sizeof(t_st));
 	if (st)
 	{
-		st->stack = malloc(sizeof(int) * len_max);
+		st->stack = malloc(sizeof(int) * (len_max));
 		if (!st->stack)
 			return (NULL);
 	}
