@@ -6,7 +6,7 @@
 #    By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/17 15:15:06 by nahaddac          #+#    #+#              #
-#    Updated: 2021/10/08 10:49:34 by mkravetz         ###   ########.fr        #
+#    Updated: 2021/10/20 09:53:38 by mkravetz         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-# SEGV			= -fsanitize=address
+SEGV			= -fsanitize=address
 CFLAGS			= $(SEGV) -Wall -Wextra -Werror
 
 NAME			= push_swap

@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:24:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/10/05 17:25:30 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/10/20 13:59:26 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ t_st    *ft_alloc_stack(t_st *st, int len_max)
 	}
 	else
 		return(NULL);
-	return (st);	    
+	return (st);
 }
 
 void ft_free_stack(t_st *a)
@@ -130,13 +130,16 @@ t_st 	*ft_init_index_stack(t_st *s)
 		return (NULL);
 	while(i <= s->len_max)
 	{
+		fprintf(stderr,"\n\n\n address of s->stack_sorted[i] ==%p\n\n\n", &s->stack_sorted[i]);
 		while(s->stack[j] != s->stack_sorted[i])
 		{
-			if (s->stack_sorted[i] == s->stack_sorted[i + 1] && i < s->len_max)
-			{
-				s->error = 1;
-				return (s);
-			}
+//			if (i != s->len_max && s->stack_sorted[i] == s->stack_sorted[i + 1] )
+//			{
+//				s->error = 1;
+//				return (s);
+//			}
+		fprintf(stderr,"j->stack[%zu] == %d\n",j,s->stack[j]);
+		fprintf(stderr,"\x1b[35m""i->stack[%zu] == %d\n""\x1b[0m",i,s->stack[i]);
 			j++;
 		}
 		s->index[i] = j;

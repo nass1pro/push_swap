@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/10/08 11:31:44 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/10/20 10:18:23 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static int ft_verif(char *str)
 	i = 0;
 	while(i < ft_strlen(str))
 	{
-		
 		if (str[i] == ' ')
 			i++;
 		if (str[i] == '-')
@@ -54,7 +53,7 @@ int main(int ac, char **av)
 	t_st	*stack_a;
 	size_t	i;
 	t_st 	*stack_b;
-	
+
 	lst = NULL;
 	stack_a = NULL;
 	stack_b = NULL;
@@ -85,7 +84,6 @@ int main(int ac, char **av)
 			return -1;
 		ft_free_lst(lst);
 	}
-	
 	if (ft_verif_sort(stack_a) == -1)
 	{
 		write(1, "OK\n", 3);
@@ -101,6 +99,7 @@ int main(int ac, char **av)
 		return -1;
 	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0, stack_a->len_max - 1);
 	stack_a = ft_init_index_stack(stack_a);
+	fprintf(stderr,"\x1b[35m""Hello everyone\n""\x1b[0m");
 	if (stack_a->error == 1)
 	{
 		ft_free_stack(stack_b);
@@ -120,7 +119,6 @@ int main(int ac, char **av)
 	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
 	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
 	// }
-		
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
 	return(0);
