@@ -6,7 +6,7 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:24:54 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/10/20 13:59:26 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/10/20 14:19:30 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,13 +108,15 @@ t_st *ft_init_sort_stack(t_st *s)
 {
 	size_t i;
 
-	i = -1;
-	s->stack_sorted = malloc(sizeof(int) * s->len_max);
+	i = 0;
+	s->stack_sorted = malloc(sizeof(int) * (s->len_max + 1));
 	if (!s->stack_sorted)
 		return (NULL);
-
-	while(++i < s->len_max)
+	while(i < s->len_max)
+	{
 		s->stack_sorted[i] = s->stack[i];
+		i++;
+	}
 	return (s);
 }
 
@@ -125,21 +127,18 @@ t_st 	*ft_init_index_stack(t_st *s)
 
 	i = 0;
 	j = 0;
-	s->index = malloc(sizeof(int) * s->len_max);
+	s->index = malloc(sizeof(int) * (s->len_max + 1));
 	if (!s->index)
 		return (NULL);
 	while(i <= s->len_max)
 	{
-		fprintf(stderr,"\n\n\n address of s->stack_sorted[i] ==%p\n\n\n", &s->stack_sorted[i]);
 		while(s->stack[j] != s->stack_sorted[i])
 		{
-//			if (i != s->len_max && s->stack_sorted[i] == s->stack_sorted[i + 1] )
-//			{
-//				s->error = 1;
-//				return (s);
-//			}
-		fprintf(stderr,"j->stack[%zu] == %d\n",j,s->stack[j]);
-		fprintf(stderr,"\x1b[35m""i->stack[%zu] == %d\n""\x1b[0m",i,s->stack[i]);
+			if (i != s->len_max && s->stack_sorted[i] == s->stack_sorted[i + 1] )
+			{
+				s->error = 1;
+				return (s);
+			}
 			j++;
 		}
 		s->index[i] = j;
