@@ -6,19 +6,20 @@
 /*   By: mkravetz <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:47:10 by mkravetz          #+#    #+#             */
-/*   Updated: 2021/10/20 14:37:03 by mkravetz         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:31:27 by mkravetz         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_get_max_bits(t_st *stack)
+static int	ft_get_max_bits(int *ind, t_st *stack)
 {
 	int	max_nb;
 	int	res;
 
 	res = 0;
-	max_nb = stack->len_max - 1;
+	fprintf(stderr,"len == %zu\n", stack->len);
+	max_nb = ind[stack->len];
 	while (max_nb)
 	{
 		max_nb = max_nb >> 1;
@@ -27,31 +28,31 @@ static int	ft_get_max_bits(t_st *stack)
 	return (res);
 }
 
-void	ft_radixsort(t_st *a, t_st *b)
+void	ft_radixsort(int *ind, t_st *b, t_st *a)
 {
-	int	i;
-	int	j;
-	int	push_back;
-	int	max_bits;
+	int i = 0;
+	size_t j = 0;
+	size_t len_b;
 
-	push_back = 0;
-	max_bits = ft_get_max_bits(a);
-	i = -1;
-	while (++i < max_bits)
+	while(i < ft_get_max_bits(ind, a))
 	{
-		j = a->first + 1;
-		while (--j >= 0)
+		len_b = 0;
+		while(j < a->len)
 		{
-			if (((a->stack[a->first] >> i) & 1) == 0)
+			if (((ind[j] >> i) & 1) == 0)
 			{
-				ft_swap_pb(b, a);
-				++push_back;
+				ft_swap_pb(b, a); // a doit etre ind (et du coup changer pb)
+				len_b++;
 			}
 			else
 				ft_swap_rotate_a(a);
+			j++;
 		}
-		++push_back;
-		while (--push_back)
+		while(len_b > 0)
+		{
 			ft_swap_pa(a, b);
+			len_b--;
+		}
+		i++;
 	}
 }
