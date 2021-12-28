@@ -62,7 +62,6 @@ int main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	i = 1;
-
 	if (ac < 2)
 		return(-1);
 	if (ac == 2)
