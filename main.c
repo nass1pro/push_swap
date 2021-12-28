@@ -36,6 +36,7 @@ static int ft_verif(char *str)
 	size_t i;
 
 	i = 0;
+	// printf("%s \n", str);
 	while(i < ft_strlen(str))
 	{
 		
@@ -61,6 +62,7 @@ int main(int ac, char **av)
 	stack_a = NULL;
 	stack_b = NULL;
 	i = 1;
+
 	if (ac < 2)
 		return(-1);
 	if (ac == 2)
@@ -87,7 +89,6 @@ int main(int ac, char **av)
 			return -1;
 		ft_free_lst(lst);
 	}
-	
 	if (ft_verif_sort(stack_a) == -1)
 	{
 		write(1, "OK\n", 3);
@@ -109,7 +110,10 @@ int main(int ac, char **av)
 		ft_free_stack(stack_a);
 		return -1;
 	}
-	len_five(stack_a, stack_b);
+	if (stack_a->len == 3)
+		ft_len_three(stack_a);
+	else
+		len_five(stack_a, stack_b);
 	// visual_stack(stack_a,stack_b);
 	if (ft_verif_sort(stack_a) == -1)
 	{
@@ -121,7 +125,7 @@ int main(int ac, char **av)
 	// 	printf("%zu index %d = ",id ,stack_a->index[id]);
 	// 	printf(" value %d \n",stack_a->stack_sorted[id]);
 	// }
-		
+	visual_stack(stack_a, stack_b);
 	ft_free_stack(stack_b);
 	ft_free_stack(stack_a);
 	return(0);

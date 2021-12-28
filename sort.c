@@ -32,31 +32,26 @@ static void ft_five(t_st *a, t_st *b)
     size_t i;
     size_t j;
 
-    i = 1;
+    i = 0;
     j = 0;
     if (b->stack[0] < b->stack[1] && b->len != 1)
         return ;
     while(b->stack[0] > a->stack[i] && i != a->len)
         i++;
-    if (i == 1)
-    {
-        // visual_stack(a, b);
+    if (i == 0)
         ft_swap_pa(a, b);
-    }
-    
     else if (i == a->len)
     {
-        // visual_stack(a, b);
         ft_swap_pa(a, b);
         ft_swap_rotate_a(a);
     }
     else
     {
-       int j = i;
+       j = i;
         while(j--)
             ft_swap_rotate_a(a);
         ft_swap_pa(a, b);
-        while(i-- > 1)
+        while(i-- >= 1)
             ft_swap_reverse_rotate_a(a);
     }
 }
@@ -71,11 +66,10 @@ void len_five(t_st *a, t_st *b)
     if (b->stack[0] < b->stack[1])
         ft_swap_sb(b);
     ft_len_three(a);
-    // visual_stack(a, b);
+    visual_stack(a, b);
     ft_five(a, b);
     if (len == 5)
         ft_five(a, b);
-    // if ()
 }
 
 

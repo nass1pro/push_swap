@@ -1,5 +1,4 @@
 
-
 #include "push_swap.h"
 
 t_st *ft_init_stack_list(char **a, int ac)
