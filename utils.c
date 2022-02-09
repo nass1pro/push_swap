@@ -12,6 +12,45 @@
 
 #include "push_swap.h"
 
+
+int ft_verif_sort(t_st *a)
+{
+	size_t i;
+	size_t v;
+	size_t t;
+
+	i = 0;
+	v = 1;
+	t = 0;
+	while (v < a->len_max)
+	{
+		if (a->stack[i] >= a->stack[v])
+			return 0;
+		i++;
+		v++;
+	}
+	return -1;
+}
+
+int ft_verif(char *str)
+{
+	size_t i;
+
+	i = 0;
+	while(i < ft_strlen(str))
+	{
+		
+		if (str[i] == ' ')
+			i++;
+		if (str[i] == '-')
+			i++;
+		if (ft_isdigit(str[i]) == 0)
+			return (-1);
+		i++;
+	}
+	return(0);
+}
+
 size_t	ft_strlen(const char *str)
 {
 	size_t i;

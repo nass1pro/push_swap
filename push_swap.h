@@ -32,6 +32,10 @@ char			**ft_split(char const *str, char charset);
 
 int             ft_free(char **lst, int *num);
 int             ft_free_lst(char **lst);
+
+// utils 
+int ft_verif(char *str);
+int             ft_verif_sort(t_st *a);
 size_t	        ft_strlen(const char *str);
 int		        ft_isdigit(int c);
 

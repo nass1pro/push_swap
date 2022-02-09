@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-static int		ft_fneg(const char *str)
+static int	ft_fneg(const char *str)
 {
 	int			i;
 
 	i = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 		i++;
 	return (i);
 }
 
-static int		ft_neg(const char *str)
+static int	ft_neg(const char *str)
 {
 	int			i;
 	int			f;
@@ -32,8 +32,8 @@ static int		ft_neg(const char *str)
 	n = 1;
 	i = 0;
 	f = 0;
-	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r' ||
-			str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\r'
+		|| str[i] == '\v' || str[i] == '\f' || str[i] == ' ')
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
@@ -50,7 +50,7 @@ static int		ft_neg(const char *str)
 	return (n);
 }
 
-int				ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int			i;
 	int			n;

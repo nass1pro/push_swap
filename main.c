@@ -12,48 +12,43 @@
 
 #include "push_swap.h"
 
-static int ft_verif_sort(t_st *a)
+static int ft_multi_arg_verif(int ac, char *av)
 {
-	size_t i;
-	size_t v;
-	size_t t;
+	int i;
 
-	i = 0;
-	v = 1;
-	t = 0;
-	while (v < a->len_max)
+	i = 1;
+	while (i <= (size_t)ac - 1)
 	{
-		if (a->stack[i] >= a->stack[v])
-			return 0;
-		i++;
-		v++;
+			if (ft_verif(av[i]) == -1)
+				return (-1);
+			i++;
 	}
-	return -1;
 }
 
-static int ft_verif(char *str)
+static int ft_write_error(t_st stack)
 {
-	size_t i;
+	write(1, "Error\n", 6);
+	if (stack)
+		ft_free_stack(stack)
+	return (-1);
+}
 
-	i = 0;
-	// printf("%s \n", str);
-	while(i < ft_strlen(str))
-	{
-		
-		if (str[i] == ' ')
-			i++;
-		if (str[i] == '-')
-			i++;
-		if (ft_isdigit(str[i]) == 0)
-			return (-1);
-		i++;
-	}
-	return(0);
+static t_st verif_arg(char *av, t_st *stack)
+{
+	char	**lst;
+
+	if (ft_verif(av[1]) == -1)
+			return (NULL);
+	lst = ft_split(av[1], ' ');
+	if (!lst)
+		return NULL;
+	stack_a = ft_init_stack(lst)
+	return (stack_a);
 }
 
 int main(int ac, char **av)
 {
-	char	**lst;
+	
 	t_st	*stack_a;
 	size_t	i;
 	t_st 	*stack_b;
@@ -66,27 +61,16 @@ int main(int ac, char **av)
 		return(-1);
 	if (ac == 2)
 	{
-		if (ft_verif(av[1]) == -1)
-			return (1);
-		lst = ft_split(av[1], ' ');
-		if (!lst)
-			return -1;
-		stack_a = ft_init_stack(lst);
+		stack_a = verif_arg(av[1], stack_a);
 		if (!stack_a)
-			return -1;
+			return (ft_write_error(NULL));
 	}
 	else
 	{
-		while (i <= (size_t)ac - 1)
-		{
-			if (ft_verif(av[i]) == -1)
-				return (-1);
-			i++;
-		}
+		ft_multi_arg_verif(ac, av[1]);
 		stack_a = ft_init_stack_list(av, ac);
 		if (!stack_a)
 			return -1;
-		ft_free_lst(lst);
 	}
 	if (ft_verif_sort(stack_a) == -1)
 	{
