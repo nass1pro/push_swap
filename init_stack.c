@@ -36,9 +36,7 @@ t_st *ft_init_stack(char **lst)
 	len = 0;
     stack_a = NULL;
 	while (lst[len] != NULL)
-	{
 		len++;
-	}
     stack_a = ft_alloc_stack(stack_a, len);
     if (!stack_a)
         return (NULL);
@@ -101,7 +99,6 @@ t_st *ft_init_sort_stack(t_st *s)
 	s->stack_sorted = malloc(sizeof(int) * s->len_max);
 	if (!s->stack_sorted)
 		return (NULL);
-	
 	while(++i < s->len_max)
 		s->stack_sorted[i] = s->stack[i];
 	return (s);

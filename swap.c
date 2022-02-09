@@ -181,9 +181,7 @@ int	ft_swap_pb(t_st *b, t_st *a)
 	int tmp = 0;
 
 	if (a->len == 0)
-	{
 		return 1;
-	}
 	else
 	{
 		i = b->len;
