@@ -65,6 +65,7 @@ int ft_start(t_st *stack_a)
 	if (!stack_a)
 		return 1;
 	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0, stack_a->len_max - 1);
+	// create new t_st index for radix !
 	stack_a = ft_init_index_stack(stack_a);
 	if (stack_a->error == 1)
 	{
