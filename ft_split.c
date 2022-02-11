@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static char		*print_str(char const *str, int size, int j, char **cp)
+static char	*print_str(char const *str, int size, int j, char **cp)
 {
 	int			i;
 
@@ -34,13 +34,21 @@ static char		*print_str(char const *str, int size, int j, char **cp)
 	return (cp[j]);
 }
 
-static char		**ft_str_is_free(char **cp)
+static char	**ft_str_is_free(char **cp)
 {
+	int	i;
+
+	i = 0;
+	while (cp[i])
+	{
+		free(cp[i]);
+		i++;
+	}
 	free(cp);
 	return (NULL);
 }
 
-static int		ft_sp(char const *str, char charset)
+static int	ft_sp(char const *str, char charset)
 {
 	const char	*word;
 	int			j;
@@ -62,7 +70,7 @@ static int		ft_sp(char const *str, char charset)
 	return (j);
 }
 
-static char		**ft_split_2(char const *str, char ch, char const *w, char **cp)
+static char	**ft_split_2(char const *str, char ch, char const *w, char **cp)
 {
 	int			j;
 
@@ -73,7 +81,8 @@ static char		**ft_split_2(char const *str, char ch, char const *w, char **cp)
 		{
 			if (str - w > 0)
 			{
-				if (!(cp[j] = print_str(w, str - w, j, cp)))
+				cp[j] = print_str(w, str - w, j, cp);
+				if (!cp[j])
 					return (ft_str_is_free(cp));
 				j++;
 			}
@@ -90,7 +99,7 @@ static char		**ft_split_2(char const *str, char ch, char const *w, char **cp)
 	return (cp);
 }
 
-char			**ft_split(char const *str, char charset)
+char	**ft_split(char const *str, char charset)
 {
 	int			i;
 	char		**cp;
