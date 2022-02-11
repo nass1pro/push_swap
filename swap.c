@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
-int	            ft_swap_s_ab(t_st *a, t_st *b)
+int	ft_swap_s_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_s(a))
 		return (1);
@@ -24,7 +24,8 @@ int	            ft_swap_s_ab(t_st *a, t_st *b)
 
 int	ft_swap_s(t_st *s)
 {
-	size_t tmp;
+	size_t	tmp;
+
 	if (s->len > 1)
 	{
 		tmp = s->stack[0];
@@ -35,7 +36,7 @@ int	ft_swap_s(t_st *s)
 	return (1);
 }
 
-int ft_swap_sa(t_st *a)
+int	ft_swap_sa(t_st *a)
 {
 	if (ft_swap_s(a))
 		return (1);
@@ -43,7 +44,7 @@ int ft_swap_sa(t_st *a)
 	return (0);
 }
 
-int ft_swap_sb(t_st *a)
+int	ft_swap_sb(t_st *a)
 {
 	if (ft_swap_s(a))
 		return (1);
@@ -53,17 +54,17 @@ int ft_swap_sb(t_st *a)
 
 int	ft_swap_pa(t_st *a, t_st *b)
 {
-	size_t i = 1;
-	int tmp = 0;
+	size_t	i;
+	int		tmp;
 
+	i = 1;
+	tmp = 0;
 	if (b->len == 0)
-	{
-		return 1;
-	}
+		return (1);
 	else
 	{
 		i = a->len;
-		while(i > 0)
+		while (i > 0)
 		{
 			tmp = a->stack[i];
 			a->stack[i] = a->stack[i - 1];
@@ -75,8 +76,8 @@ int	ft_swap_pa(t_st *a, t_st *b)
 		while (i < b->len)
 		{
 			tmp = b->stack[i];
-			b->stack[i] = b->stack[i+1];
-			b->stack[i+1] = tmp;
+			b->stack[i] = b->stack[i + 1];
+			b->stack[i + 1] = tmp;
 			i++;
 		}
 		b->first = b->stack[0];
@@ -84,13 +85,12 @@ int	ft_swap_pa(t_st *a, t_st *b)
 		b->len--;
 		a->len++;
 		i = b->len;
-		while(i++ <= b->len_max)
+		while (i++ <= b->len_max)
 			b->stack[i] = 0;
 	}
 	write(1, "pa\n", 3);
-	return 0;
+	return (0);
 }
-
 
 int	ft_swap_reverse_rotate(t_st *s)
 {
@@ -104,10 +104,10 @@ int	ft_swap_reverse_rotate(t_st *s)
 		i--;
 	}
 	s->stack[0] = s->first;
-	return 0;
+	return (0);
 }
 
-int	            ft_swap_reverse_rotate_b(t_st *s)
+int	ft_swap_reverse_rotate_b(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
@@ -115,29 +115,29 @@ int	            ft_swap_reverse_rotate_b(t_st *s)
 	return (0);
 }
 
-int	            ft_swap_reverse_rotate_a(t_st *s)
+int	ft_swap_reverse_rotate_a(t_st *s)
 {
 	if (ft_swap_reverse_rotate(s))
 		return (1);
 	write(1, "rra\n", 4);
 	return (0);
 }
-int	            ft_swap_reverse_rotate_ab(t_st *a, t_st *b)
+
+int	ft_swap_reverse_rotate_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_reverse_rotate(a))
 		return (1);
 	if (ft_swap_reverse_rotate(b))
 		return (1);
 	write(1, "rrr\n", 4);
-	return 0;
+	return (0);
 }
 
 int	ft_swap_rotate(t_st *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-
 	s->first = s->stack[1];
 	s->end = s->stack[0];
 	while (i < s->len)
@@ -146,26 +146,26 @@ int	ft_swap_rotate(t_st *s)
 		i++;
 	}
 	s->stack[i - 1] = s->end;
-	return 0;
+	return (0);
 }
 
-int	            ft_swap_rotate_b(t_st *s)
+int	ft_swap_rotate_b(t_st *s)
 {
 	if (ft_swap_rotate(s))
-		return 1;
+		return (1);
 	write(1, "rb\n", 3);
 	return (0);
 }
 
-int	            ft_swap_rotate_a(t_st *s)
+int	ft_swap_rotate_a(t_st *s)
 {
 	if (ft_swap_rotate(s))
-		return 1;
+		return (1);
 	write(1, "ra\n", 3);
 	return (0);
 }
 
-int	            ft_swap_rotate_ab(t_st *a, t_st *b)
+int	ft_swap_rotate_ab(t_st *a, t_st *b)
 {
 	if (ft_swap_rotate_a(a))
 		return (1);
@@ -177,15 +177,17 @@ int	            ft_swap_rotate_ab(t_st *a, t_st *b)
 
 int	ft_swap_pb(t_st *b, t_st *a)
 {
-	size_t i = 1;
-	int tmp = 0;
+	size_t	i;
+	int		tmp;
 
+	i = 1;
+	tmp = 0;
 	if (a->len == 0)
-		return 1;
+		return (1);
 	else
 	{
 		i = b->len;
-		while(i > 0)
+		while (i > 0)
 		{
 			tmp = b->stack[i];
 			b->stack[i] = b->stack[i - 1];
@@ -197,8 +199,8 @@ int	ft_swap_pb(t_st *b, t_st *a)
 		while (i < a->len)
 		{
 			tmp = a->stack[i];
-			a->stack[i] = a->stack[i+1];
-			a->stack[i+1] = tmp;
+			a->stack[i] = a->stack[i + 1];
+			a->stack[i + 1] = tmp;
 			i++;
 		}
 		b->stack[0] = a->first;
@@ -207,9 +209,9 @@ int	ft_swap_pb(t_st *b, t_st *a)
 		a->len--;
 		b->len++;
 		i = a->len;
-		while(i++ <= a->len_max)
+		while (i++ <= a->len_max)
 			a->stack[i] = 0;
 	}
 	write(1, "pb\n", 3);
-	return 0;
+	return (0);
 }

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
 static char	*print_str(char const *str, int size, int j, char **cp)
 {
@@ -104,19 +104,11 @@ char	**ft_split(char const *str, char charset)
 	int			i;
 	char		**cp;
 	char const	*word;
-	char		**c;
 
 	cp = NULL;
-	c = NULL;
 	i = 0;
-	c = malloc(sizeof(char *) * (i));
-	if (c == NULL)
-		return (0);
 	if (str == 0 || *str == '\0' || charset == 0)
-	{
-		c[0] = 0;
-		return (c);
-	}
+		return (0);
 	i = ft_sp(str, charset);
 	cp = malloc(sizeof(char *) * (i + 1));
 	if (cp == NULL)

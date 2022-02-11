@@ -1,17 +1,28 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
+/*   Updated: 2021/08/07 15:34:39 by nahaddac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include "push_swap.h"
+#include "pushswap.h"
 
-t_st *ft_init_stack_list(char **a, int ac)
+t_st	*ft_init_stack_list(char **a, int ac)
 {
-	int	i;
+	int		i;
 	t_st	*stack_a;
 
 	i = 1;
-    stack_a = NULL;
-    stack_a = ft_alloc_stack(stack_a, ac);
+	stack_a = NULL;
+	stack_a = ft_alloc_stack(stack_a, ac);
 	if (!stack_a)
-        return (NULL);
-	while(i <= ac - 1)
+		return (NULL);
+	while (i <= ac - 1)
 	{
 		if (i == 1)
 		{
@@ -23,10 +34,10 @@ t_st *ft_init_stack_list(char **a, int ac)
 	stack_a->end = stack_a->stack[i - 1];
 	stack_a->len = ac - 1;
 	stack_a->len_max = ac - 1;
-	return(stack_a);
+	return (stack_a);
 }
 
-t_st *ft_init_stack(char **lst)
+t_st	*ft_init_stack(char **lst)
 {
 	size_t	i;
 	size_t	len;
@@ -34,14 +45,14 @@ t_st *ft_init_stack(char **lst)
 
 	i = 0;
 	len = 0;
-    stack_a = NULL;
+	stack_a = NULL;
 	while (lst[len] != NULL)
 		len++;
-    stack_a = ft_alloc_stack(stack_a, len);
-    if (!stack_a)
-        return (NULL);
+	stack_a = ft_alloc_stack(stack_a, len);
+	if (!stack_a)
+		return (NULL);
 	i = 0;
-	while(i < len)
+	while (i < len)
 	{
 		stack_a->stack[i] = ft_atoi(lst[i]);
 		i++;
@@ -51,81 +62,74 @@ t_st *ft_init_stack(char **lst)
 	stack_a->len = len;
 	stack_a->len_max = len;
 	stack_a->error = 0;
-	return(stack_a);
+	return (stack_a);
 }
 
-t_st *ft_init_stack_b(t_st *a)
+t_st	*ft_init_stack_b(t_st *a)
 {
-	t_st *stack_b;
+	t_st	*stack_b;
 
-    stack_b = NULL;
+	stack_b = NULL;
 	stack_b = ft_alloc_stack(stack_b, a->len_max);
-    if (!stack_b)
-        return (NULL);
+	if (!stack_b)
+		return (NULL);
 	stack_b->len = 0;
 	stack_b->len_max = a->len_max;
 	return (stack_b);
 }
 
-t_st    *ft_alloc_stack(t_st *st, int len_max)
+t_st	*ft_alloc_stack(t_st *st, int len_max)
 {
-    st = malloc(sizeof(t_st));
-    if (st)
-    {
-        st->stack = malloc(sizeof(int) * len_max);
-	    if (!st->stack)
-		    return (NULL);
-    }
-    else
-        return(NULL);
-    return (st);	    
+	st = malloc(sizeof(t_st));
+	if (st)
+	{
+		st->stack = malloc(sizeof(int) * len_max);
+		if (!st->stack)
+			return (NULL);
+	}
+	else
+		return (NULL);
+	return (st);
 }
 
-void ft_free_stack(t_st *a)
+void	ft_free_stack(t_st *a)
 {
-    free(a->stack);
-	// if (a->index)
-	// 	free(a->index);
-	// if (a->stack_sorted)
-	// 	free(a->stack_sorted);
-    free(a);
+	free(a->stack);
+	if (a->index)
+		free(a->index);
+	if (a->stack_sorted)
+		free(a->stack_sorted);
+	free(a);
 }
 
-t_st *ft_init_sort_stack(t_st *s)
+t_st	*ft_init_sort_stack(t_st *s)
 {
-	size_t i;
+	size_t	i;
 
 	i = -1;
 	s->stack_sorted = malloc(sizeof(int) * s->len_max);
 	if (!s->stack_sorted)
 		return (NULL);
-	while(++i < s->len_max)
+	while (++i < s->len_max)
 		s->stack_sorted[i] = s->stack[i];
 	return (s);
 }
 
-t_st 	*ft_init_index_stack(t_st *s)
+t_st	*ft_init_index_stack(t_st *s)
 {
-	size_t i;
-	size_t j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	j = 0;
 	s->index = malloc(sizeof(int) * s->len_max);
 	if (!s->index)
 		return (NULL);
-	while(i <= s->len_max)
+	while (i <= s->len_max)
 	{
-		while(s->stack[j] != s->stack_sorted[i])
-		{
-			if (s->stack_sorted[i] == s->stack_sorted[i + 1] && i < s->len_max)
-			{
-				s->error = 1;
-				return (s);
-			}
+		while (s->stack[j] != s->stack_sorted[i])
 			j++;
-		}
-		s->index[i] = j;
+		s->index[i] = i;
 		j = 0;
 		i++;
 	}
