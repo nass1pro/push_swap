@@ -73,7 +73,7 @@ int	ft_swap_pa(t_st *a, t_st *b)
 		}
 		a->stack[0] = b->stack[0];
 		i = 0;
-		while (i < b->len)
+		while (i < b->len - 1 )
 		{
 			tmp = b->stack[i];
 			b->stack[i] = b->stack[i + 1];
@@ -82,11 +82,13 @@ int	ft_swap_pa(t_st *a, t_st *b)
 		}
 		b->first = b->stack[0];
 		a->first = a->stack[0];
+		a->end = a->stack[a->len];
+		b->end = b->stack[b->len - 1];
 		b->len--;
 		a->len++;
 		i = b->len;
-		while (i++ <= b->len_max)
-			b->stack[i] = 0;
+		while (i < b->len_max)
+			b->stack[i++] = 0;
 	}
 	write(1, "pa\n", 3);
 	return (0);
@@ -104,6 +106,7 @@ int	ft_swap_reverse_rotate(t_st *s)
 		i--;
 	}
 	s->stack[0] = s->first;
+	s->end = s->stack[s->len - 1];
 	return (0);
 }
 
@@ -137,30 +140,28 @@ int	ft_swap_rotate(t_st *s)
 {
 	size_t	i;
 
-	i = 0;
+	i = -1;
 	s->first = s->stack[1];
 	s->end = s->stack[0];
-	while (i < s->len)
+	while (++i < s->len)
 	{
 		s->stack[i] = s->stack[i + 1];
-		i++;
 	}
 	s->stack[i - 1] = s->end;
+	// visual_stack(s, s);
 	return (0);
 }
 
 int	ft_swap_rotate_b(t_st *s)
 {
-	if (ft_swap_rotate(s))
-		return (1);
+	ft_swap_rotate(s);
 	write(1, "rb\n", 3);
 	return (0);
 }
 
 int	ft_swap_rotate_a(t_st *s)
 {
-	if (ft_swap_rotate(s))
-		return (1);
+	ft_swap_rotate(s);
 	write(1, "ra\n", 3);
 	return (0);
 }
@@ -203,14 +204,15 @@ int	ft_swap_pb(t_st *b, t_st *a)
 			a->stack[i + 1] = tmp;
 			i++;
 		}
-		b->stack[0] = a->first;
-		a->first = a->stack[0];
 		b->first = b->stack[0];
+		a->first = a->stack[0];
 		a->len--;
 		b->len++;
+		a->end = a->stack[a->len];
+		b->end = b->stack[b->len - 1];
 		i = a->len;
-		while (i++ <= a->len_max)
-			a->stack[i] = 0;
+		while (i < a->len_max - 1)
+			a->stack[i++] = 0;
 	}
 	write(1, "pb\n", 3);
 	return (0);

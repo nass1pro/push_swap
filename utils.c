@@ -16,11 +16,9 @@ int	ft_verif_sort(t_st *a)
 {
 	size_t	i;
 	size_t	v;
-	size_t	t;
 
 	i = 0;
 	v = 1;
-	t = 0;
 	while (v < a->len_max)
 	{
 		if (a->stack[i] >= a->stack[v])
@@ -28,7 +26,21 @@ int	ft_verif_sort(t_st *a)
 		i++;
 		v++;
 	}
-	return (-1);
+	return (1);
+}
+
+int ft_test_sort(t_st *a)
+{
+	size_t i = 0;
+	size_t v = 1;
+	while (v < a->len)
+	{
+		if (a->stack[i] >= a->stack[v])
+			return (1);
+		i++;
+		v++;
+	}
+	return 0;
 }
 
 int	ft_verif(char *str)

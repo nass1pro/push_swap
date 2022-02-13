@@ -11,13 +11,14 @@
 # **************************************************************************** #
 
 SRCS			= main.c utils.c ft_split.c ft_atoi.c swap.c \
-					test.c init_stack.c sort.c ft_quick_sort.c
+					test.c init_stack.c sort.c ft_quick_sort.c \
+					ft_radix_sort.c
 
 OBJS			= $(SRCS:.c=.o)
 
 CC				= gcc
 RM				= rm -f
-# SEGV			= -fsanitize=address
+# SEGV			= -g -fsanitize=address
 CFLAGS			= $(SEGV) -Wall -Wextra -Werror
 
 NAME			= push_swap

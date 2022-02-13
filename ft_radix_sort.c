@@ -16,24 +16,34 @@ int	ft_radix(t_st *a, t_st *b)
 {
 	int	i;
 	int	j;
+	int max_num = a->len_max - 1;
+	int max_bits = 0;
+	int sort;
 
-	i = 0;
-	j = 0;
-	while (true)
+	i = -1;
+	while ((max_num >> max_bits) != 0)
+		++max_bits;
+	while (++i < max_bits)
 	{
-		j = 0;
-		while (j < a->len)
+		j = -1;
+		while (++j < (int)a->len_max)
 		{
-			if ((a->first >> i) & 1)
+			sort = a->stack[0];
+			if (((sort >> i) & 1) == 1)
+			{
 				ft_swap_rotate_a(a);
+				// visual_stack(a, b);
+			}
 			else
+			{
 				ft_swap_pb(b, a);
-			j++;
+				// visual_stack(a, b);
+			}
 		}
-		while (b->len)
+		while (b->len != 0)
+		{
 			ft_swap_pa(a, b);
-		if (ft_verif_sort(a) == -1)
-			break ;
-		i++;
+		}
 	}
+	return (0);
 }

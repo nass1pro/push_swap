@@ -71,4 +71,9 @@ void	len_five(t_st *a, t_st *b);
 // ft_quick_sort.c
 int		*ft_quick_sort(int *arr, int low, int higth);
 int		*ft_swap(int *stack, int i, int j);
+int		ft_radix(t_st *a, t_st *b);
+
+
+
+int ft_test_sort(t_st *a);
 #endif

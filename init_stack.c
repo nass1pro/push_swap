@@ -125,13 +125,17 @@ t_st	*ft_init_index_stack(t_st *s)
 	s->index = malloc(sizeof(int) * s->len_max);
 	if (!s->index)
 		return (NULL);
-	while (i <= s->len_max)
+	while (i < s->len_max)
 	{
 		while (s->stack[j] != s->stack_sorted[i])
 			j++;
-		s->index[i] = i;
+		s->index[j] = i;
 		j = 0;
 		i++;
 	}
+	i = -1;
+	while(++i <= s->len_max - 1)
+		s->stack[i] = s->index[i];
+	// free(s->index);
 	return (s);
 }
