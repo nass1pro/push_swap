@@ -48,7 +48,7 @@ t_st	*ft_init_stack(char **lst)
 	stack_a = NULL;
 	while (lst[len] != NULL)
 		len++;
-	stack_a = ft_alloc_stack(stack_a, len);
+	stack_a = ft_alloc_stack(stack_a, len + 1);
 	if (!stack_a)
 		return (NULL);
 	i = 0;
@@ -136,6 +136,6 @@ t_st	*ft_init_index_stack(t_st *s)
 	i = -1;
 	while(++i <= s->len_max - 1)
 		s->stack[i] = s->index[i];
-	// free(s->index);
+	free(s->index);
 	return (s);
 }
