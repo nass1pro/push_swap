@@ -4,8 +4,8 @@ void visual_stack(t_st *stack_a, t_st *stack_b)
 {
     size_t i = 0;
 	(void)stack_b;
-	printf("%zu\n", stack_b->len);
-    while (i < stack_a->len_max )
+	printf("%zu\n", stack_a->len);
+    while (i < stack_a->len )
 	{
 		printf("stack a =  %d \t sorted =  %d \n", stack_a->stack[i], stack_b->stack[i]);
 		i++;

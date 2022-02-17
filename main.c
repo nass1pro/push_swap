@@ -12,6 +12,18 @@
 
 #include "pushswap.h"
 
+static int    ft_strchr(const char *s, int c)
+{
+    int    i;
+
+    i = 0;
+    while (s[i] && s[i] != (char)c)
+        i++;
+    if (s[i] == (char)c)
+        return (1);
+    return (0);
+}
+
 static int	ft_multi_arg_verif(int ac, char **av)
 {
 	int	i;
@@ -20,6 +32,8 @@ static int	ft_multi_arg_verif(int ac, char **av)
 	while (i <= ac - 1)
 	{
 		if (ft_verif(av[i]) == -1)
+			return (-1);
+		if  (ft_strchr(av[i], ' ') == 1)
 			return (-1);
 		i++;
 	}
@@ -72,16 +86,31 @@ int	ft_start(t_st *stack_a)
 	t_st	*stack_b;
 
 	stack_b = NULL;
-	if (ft_verif_sort(stack_a) == -1)
+	if (ft_verif_sort(stack_a) == 1)
 	{
 		write(1, "OK\n", 3);
-		ft_free_stack(stack_a);
+		free(stack_a->stack);
+		free(stack_a);
+		return (0);
+	}
+	if (stack_a->len_max == 2)
+	{
+		ft_swap_sa(stack_a);
+		free(stack_a->stack);
+		free(stack_a);
+		return (0);
+	}
+	if (stack_a->len_max == 3)
+	{
+		ft_len_three(stack_a);
+		free(stack_a->stack);
+		free(stack_a);
 		return (0);
 	}
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (1);
-	if (stack_a->len_max <= 5)
+	else if (stack_a->len_max == 5)
 		len_five(stack_a, stack_b);
 	else
 	{
@@ -90,8 +119,10 @@ int	ft_start(t_st *stack_a)
 			ft_write_error(stack_a);
 			return (1);
 		}
-	
+		// free all stack_a and stack_b
+		return (0);
 	}
+	//free stack a
 	return (0);
 }
 
@@ -114,7 +145,11 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		ft_multi_arg_verif(ac, av);
+		if (ft_multi_arg_verif(ac, av) == - 1)
+		{
+			write(1, "Error\n",  6);
+			return (0);
+		}
 		stack_a = ft_init_stack_list(av, ac);
 		if (!stack_a)
 			return (-1);

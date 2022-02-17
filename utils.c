@@ -50,10 +50,12 @@ int	ft_verif(char *str)
 	i = 0;
 	while (i < ft_strlen(str))
 	{
+
 		if (str[i] == ' ')
 			i++;
 		if (str[i] == '-')
 			i++;
+			
 		if (ft_isdigit(str[i]) == 0)
 			return (-1);
 		i++;
