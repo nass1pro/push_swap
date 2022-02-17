@@ -43,10 +43,30 @@ static t_st	*verif_arg(char *av, t_st *stack)
 	lst = ft_split(av, ' ');
 	if (!lst)
 		return (NULL);
+	
 	stack = ft_init_stack(lst);
 	return (stack);
 }
 
+static t_st	*ft_init_radix_sort(t_st  *stack_a, t_st *stack_b)
+{
+	stack_a = ft_init_sort_stack(stack_a);
+	if (!stack_a)
+		return (NULL);
+	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0,
+			stack_a->len_max - 1);
+	visual_stack(stack_a, stack_b);
+	stack_a = ft_init_index_stack(stack_a);
+	visual_stack(stack_a, stack_b);
+	ft_radix(stack_a, stack_b);
+	if (stack_a->error == 1)
+	{
+		ft_free_stack(stack_b);
+		ft_free_stack(stack_a);
+		return (NULL);
+	}
+	return (stack_a);
+}
 int	ft_start(t_st *stack_a)
 {
 	t_st	*stack_b;
@@ -61,23 +81,16 @@ int	ft_start(t_st *stack_a)
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (1);
-	// len_five(stack_a, stack_b);
-	stack_a = ft_init_sort_stack(stack_a);
-	if (!stack_a)
-		return (1);
-	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0,
-			stack_a->len_max - 1);
-	// visual_stack(stack_a, stack_b);
-	stack_a = ft_init_index_stack(stack_a);
-	// visual_stack(stack_a, stack_b);
-	ft_radix(stack_a, stack_b);
-	// printf("end\n");
-	// visual_stack(stack_a, stack_b);
-	if (stack_a->error == 1)
+	if (stack_a->len_max <= 5)
+		len_five(stack_a, stack_b);
+	else
 	{
-		ft_free_stack(stack_b);
-		ft_free_stack(stack_a);
-		return (1);
+		if (!ft_init_radix_sort(stack_a, stack_b))
+		{
+			ft_write_error(stack_a);
+			return (1);
+		}
+	
 	}
 	return (0);
 }
@@ -110,22 +123,3 @@ int	main(int ac, char **av)
 		return (ft_write_error(stack_a));
 	return (0);
 }
-
-// if (stack_a->len == 3)
-// 	ft_len_three(stack_a);
-// else
-// 	len_five(stack_a, stack_b);
-// // visual_stack(stack_a,stack_b);
-// if (ft_verif_sort(stack_a) == -1)
-// {
-// 	printf("OK");
-// }
-// size_t id = -1;
-// while( ++id  < stack_a->len_max)
-// {
-// 	printf("%zu index %d = ",id ,stack_a->index[id]);
-// 	printf(" value %d \n",stack_a->stack_sorted[id]);
-// }
-
-// ft_free_stack(stack_b);
-// ft_free_stack(stack_a);
