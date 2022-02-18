@@ -3,50 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/08/07 15:34:39 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:07:49 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-
-static int    ft_strchr(const char *s, int c)
-{
-    int    i;
-
-    i = 0;
-    while (s[i] && s[i] != (char)c)
-        i++;
-    if (s[i] == (char)c)
-        return (1);
-    return (0);
-}
-
-static int	ft_multi_arg_verif(int ac, char **av)
-{
-	int	i;
-
-	i = 1;
-	while (i <= ac - 1)
-	{
-		if (ft_verif(av[i]) == -1)
-			return (-1);
-		if  (ft_strchr(av[i], ' ') == 1)
-			return (-1);
-		i++;
-	}
-	return (0);
-}
-
-static int	ft_write_error(t_st *stack)
-{
-	write(1, "Error\n", 6);
-	if (stack)
-		ft_free_stack(stack);
-	return (-1);
-}
 
 static t_st	*verif_arg(char *av, t_st *stack)
 {
@@ -57,12 +21,11 @@ static t_st	*verif_arg(char *av, t_st *stack)
 	lst = ft_split(av, ' ');
 	if (!lst)
 		return (NULL);
-	
 	stack = ft_init_stack(lst);
 	return (stack);
 }
 
-static t_st	*ft_init_radix_sort(t_st  *stack_a, t_st *stack_b)
+static t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b)
 {
 	stack_a = ft_init_sort_stack(stack_a);
 	if (!stack_a)
@@ -81,11 +44,9 @@ static t_st	*ft_init_radix_sort(t_st  *stack_a, t_st *stack_b)
 	}
 	return (stack_a);
 }
-int	ft_start(t_st *stack_a)
-{
-	t_st	*stack_b;
 
-	stack_b = NULL;
+int	ft_start_short_len(t_st *stack_a)
+{
 	if (ft_verif_sort(stack_a) == 1)
 	{
 		write(1, "OK\n", 3);
@@ -107,6 +68,16 @@ int	ft_start(t_st *stack_a)
 		free(stack_a);
 		return (0);
 	}
+	return (0);
+}
+
+int	ft_start(t_st *stack_a)
+{
+	t_st	*stack_b;
+
+	stack_b = NULL;
+	if (stack_a->len_max <= 5)
+		return (ft_start_short_len(stack_a));
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (1);
@@ -115,26 +86,23 @@ int	ft_start(t_st *stack_a)
 	else
 	{
 		if (!ft_init_radix_sort(stack_a, stack_b))
-		{
 			ft_write_error(stack_a);
-			return (1);
-		}
-		// free all stack_a and stack_b
-		return (0);
 	}
-	//free stack a
+	free(stack_a->stack);
+	free(stack_a->stack_sorted);
+	free(stack_b->stack);
+	free(stack_a);
+	free(stack_b);
 	return (0);
 }
 
 int	main(int ac, char **av)
 {
 	t_st	*stack_a;
-	size_t	i;
 	char	**lst;
 
 	lst = NULL;
 	stack_a = NULL;
-	i = 1;
 	if (ac < 2)
 		return (-1);
 	if (ac == 2)
@@ -145,11 +113,8 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		if (ft_multi_arg_verif(ac, av) == - 1)
-		{
-			write(1, "Error\n",  6);
-			return (0);
-		}
+		if (ft_multi_arg_verif(ac, av) == -1)
+			return (write(1, "Error\n", 6));
 		stack_a = ft_init_stack_list(av, ac);
 		if (!stack_a)
 			return (-1);

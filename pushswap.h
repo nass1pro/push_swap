@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pushswap.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahaddac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:40 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/06/23 10:59:43 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 17:05:03 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ int		ft_verif(char *str);
 int		ft_verif_sort(t_st *a);
 size_t	ft_strlen(const char *str);
 int		ft_isdigit(int c);
+int    	ft_strchr(const char *s, int c);
+
+int		ft_multi_arg_verif(int ac, char **av);
+int		ft_write_error(t_st *stack);
 // init_stack.c
 t_st	*ft_init_stack_b(t_st *stack_a);
 t_st	*ft_init_stack(char **lst);
