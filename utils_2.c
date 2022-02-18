@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/18 18:41:48 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 18:45:53 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:13:47 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	ft_verif(char *str)
 	i = 0;
 	while (i < ft_strlen(str))
 	{
-		if (str[i] == ' ')
+		while (str[i] == ' ')
 			i++;
 		if (str[i] == '-')
 			i++;

@@ -3,3 +3,16 @@
 
 cas a pb:
 ./push_swap "12345 -12 -2435 2147483647" ok
+
+
+- segfaut quand 2 especes entre args
+
+
+- ./push_swap "1  2147483648 2 -1"
+devrait pas retourner error
+
+- ./push_swap ""
+segfault
+
+- max 12 instructions for 5 random numbers sir
+-> sort.c:66 chose the most easy way RA or RRA

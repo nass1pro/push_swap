@@ -6,11 +6,13 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 23:01:41 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:18:01 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+
+#include <stdio.h>
 
 static t_st	*verif_arg(char *av, t_st *stack)
 {
@@ -106,6 +108,8 @@ int	main(int ac, char **av)
 		return (-1);
 	if (ac == 2)
 	{
+		if (av[1][0] == '\0')
+			return (1); 
 		stack_a = verif_arg(av[1], stack_a);
 		if (!stack_a)
 			return (ft_write_error(NULL));
