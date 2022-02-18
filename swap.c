@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nahaddac <nahaddac@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 14:57:39 by nahaddac          #+#    #+#             */
-/*   Updated: 2021/08/07 15:08:45 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 18:31:36 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,48 +49,6 @@ int	ft_swap_sb(t_st *a)
 	if (ft_swap_s(a))
 		return (1);
 	write(1, "sb\n", 3);
-	return (0);
-}
-
-int	ft_swap_pa(t_st *a, t_st *b)
-{
-	size_t	i;
-	int		tmp;
-
-	i = 1;
-	tmp = 0;
-	if (b->len == 0)
-		return (1);
-	else
-	{
-		i = a->len;
-		while (i > 0)
-		{
-			tmp = a->stack[i];
-			a->stack[i] = a->stack[i - 1];
-			a->stack[i - 1] = tmp;
-			i--;
-		}
-		a->stack[0] = b->stack[0];
-		i = 0;
-		while (i < b->len - 1 )
-		{
-			tmp = b->stack[i];
-			b->stack[i] = b->stack[i + 1];
-			b->stack[i + 1] = tmp;
-			i++;
-		}
-		b->first = b->stack[0];
-		a->first = a->stack[0];
-		a->end = a->stack[a->len];
-		b->end = b->stack[b->len - 1];
-		b->len--;
-		a->len++;
-		i = b->len;
-		while (i < b->len_max)
-			b->stack[i++] = 0;
-	}
-	write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -148,7 +106,6 @@ int	ft_swap_rotate(t_st *s)
 		s->stack[i] = s->stack[i + 1];
 	}
 	s->stack[i - 1] = s->end;
-	// visual_stack(s, s);
 	return (0);
 }
 
@@ -173,47 +130,5 @@ int	ft_swap_rotate_ab(t_st *a, t_st *b)
 	if (ft_swap_rotate_b(b))
 		return (1);
 	write(1, "rr\n", 3);
-	return (0);
-}
-
-int	ft_swap_pb(t_st *b, t_st *a)
-{
-	size_t	i;
-	int		tmp;
-
-	i = 1;
-	tmp = 0;
-	if (a->len == 0)
-		return (1);
-	else
-	{
-		i = b->len;
-		while (i > 0)
-		{
-			tmp = b->stack[i];
-			b->stack[i] = b->stack[i - 1];
-			b->stack[i - 1] = tmp;
-			i--;
-		}
-		i = 0;
-		b->stack[0] = a->stack[0];
-		while (i < a->len)
-		{
-			tmp = a->stack[i];
-			a->stack[i] = a->stack[i + 1];
-			a->stack[i + 1] = tmp;
-			i++;
-		}
-		b->first = b->stack[0];
-		a->first = a->stack[0];
-		a->len--;
-		b->len++;
-		a->end = a->stack[a->len];
-		b->end = b->stack[b->len - 1];
-		i = a->len;
-		while (i < a->len_max - 1)
-			a->stack[i++] = 0;
-	}
-	write(1, "pb\n", 3);
 	return (0);
 }
