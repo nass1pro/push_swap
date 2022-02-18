@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 16:23:00 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:08:15 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,50 +93,4 @@ t_st	*ft_alloc_stack(t_st *st, int len_max)
 	else
 		return (NULL);
 	return (st);
-}
-
-void	ft_free_stack(t_st *a)
-{
-	free(a->stack);
-	if (a->stack_sorted)
-		free(a->stack_sorted);
-	free(a);
-}
-
-t_st	*ft_init_sort_stack(t_st *s)
-{
-	size_t	i;
-
-	i = -1;
-	s->stack_sorted = malloc(sizeof(int) * s->len_max);
-	if (!s->stack_sorted)
-		return (NULL);
-	while (++i < s->len_max)
-		s->stack_sorted[i] = s->stack[i];
-	return (s);
-}
-
-t_st	*ft_init_index_stack(t_st *s)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	s->index = malloc(sizeof(int) * s->len_max);
-	if (!s->index)
-		return (NULL);
-	while (i < s->len_max)
-	{
-		while (s->stack[j] != s->stack_sorted[i])
-			j++;
-		s->index[j] = i;
-		j = 0;
-		i++;
-	}
-	i = -1;
-	while(++i <= s->len_max - 1)
-		s->stack[i] = s->index[i];
-	free(s->index);
-	return (s);
 }
