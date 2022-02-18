@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 19:52:25 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:01:41 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,24 @@ int	ft_start(t_st *stack_a)
 
 	stack_b = NULL;
 	if (check_doublon(stack_a->stack, stack_a->len_max))
-		return (1);
+			return (1);
 	if (stack_a->len_max < 4)
 		return (ft_start_short_len(stack_a));
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
+	{
+		free(stack_a->stack);
+		free(stack_a);
 		return (1);
+	}
 	else if (stack_a->len_max <= 5)
 		len_five(stack_a, stack_b);
 	else
 	{
 		if (!ft_init_radix_sort(stack_a, stack_b))
 			ft_write_error(stack_a);
+		ft_free_stack_end(stack_a, stack_b);
 	}
-	free(stack_a->stack);
-	free(stack_a->stack_sorted);
-	free(stack_b->stack);
-	free(stack_a);
-	free(stack_b);
 	return (0);
 }
 

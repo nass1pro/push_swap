@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 17:10:27 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:01:14 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,8 @@ void	len_five(t_st *a, t_st *b)
 	ft_five(a, b);
 	if (len == 5)
 		ft_five(a, b);
+	free(a->stack);
+	free(b->stack);
+	free(a);
+	free(b);
 }

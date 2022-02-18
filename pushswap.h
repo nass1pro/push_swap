@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:40 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 19:51:44 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 23:00:16 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,5 @@ int		ft_test_sort(t_st *a);
 t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b);
 
 int check_doublon(int *s, size_t len);
+void ft_free_stack_end(t_st *a, t_st *b);
 #endif

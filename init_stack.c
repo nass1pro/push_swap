@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 19:56:59 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 22:11:26 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ t_st	*ft_init_stack(char **lst)
 	i = 0;
 	len = 0;
 	stack_a = NULL;
+	
 	while (lst[len] != NULL)
 		len++;
 	stack_a = ft_alloc_stack(stack_a, len + 1);
@@ -64,7 +65,7 @@ t_st	*ft_init_stack(char **lst)
 	stack_a->len = len;
 	stack_a->len_max = len;
 	stack_a->error = 0;
-	stack_a->index = NULL;
+	// stack_a->index = NULL;
 	return (stack_a);
 }
 
