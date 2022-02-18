@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 17:07:49 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:52:25 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,14 @@ static t_st	*verif_arg(char *av, t_st *stack)
 	return (stack);
 }
 
-static t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b)
+t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b)
 {
 	stack_a = ft_init_sort_stack(stack_a);
 	if (!stack_a)
 		return (NULL);
 	stack_a->stack_sorted = ft_quick_sort(stack_a->stack_sorted, 0,
 			stack_a->len_max - 1);
-	visual_stack(stack_a, stack_b);
 	stack_a = ft_init_index_stack(stack_a);
-	visual_stack(stack_a, stack_b);
 	ft_radix(stack_a, stack_b);
 	if (stack_a->error == 1)
 	{
@@ -49,7 +47,6 @@ int	ft_start_short_len(t_st *stack_a)
 {
 	if (ft_verif_sort(stack_a) == 1)
 	{
-		write(1, "OK\n", 3);
 		free(stack_a->stack);
 		free(stack_a);
 		return (0);
@@ -76,12 +73,14 @@ int	ft_start(t_st *stack_a)
 	t_st	*stack_b;
 
 	stack_b = NULL;
-	if (stack_a->len_max <= 5)
+	if (check_doublon(stack_a->stack, stack_a->len_max))
+		return (1);
+	if (stack_a->len_max < 4)
 		return (ft_start_short_len(stack_a));
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
 		return (1);
-	else if (stack_a->len_max == 5)
+	else if (stack_a->len_max <= 5)
 		len_five(stack_a, stack_b);
 	else
 	{

@@ -6,14 +6,15 @@
 #    By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/10/17 15:15:06 by nahaddac          #+#    #+#              #
-#    Updated: 2022/02/18 19:07:38 by nahaddac         ###   ########.fr        #
+#    Updated: 2022/02/18 20:08:18 by nahaddac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS			= main.c utils.c ft_split.c ft_atoi.c swap.c \
-					test.c init_stack.c sort.c ft_quick_sort.c \
+					init_stack.c sort.c ft_quick_sort.c \
 					ft_radix_sort.c push_stack.c swap_rotate.c \
-					swap_ss.c init_stack_two.c
+					swap_ss.c init_stack_two.c utils_2.c \
+					utils_3.c
 
 OBJS			= $(SRCS:.c=.o)
 

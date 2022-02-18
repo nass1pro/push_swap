@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 19:08:15 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 19:56:59 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,10 @@ t_st	*ft_alloc_stack(t_st *st, int len_max)
 	{
 		st->stack = malloc(sizeof(int) * len_max);
 		if (!st->stack)
+		{
+			free(st);
 			return (NULL);
+		}
 	}
 	else
 		return (NULL);

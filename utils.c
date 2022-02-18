@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 12:37:42 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 18:45:22 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/18 20:03:47 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,11 @@ int	ft_multi_arg_verif(int ac, char **av)
 int	ft_write_error(t_st *stack)
 {
 	write(1, "Error\n", 6);
+	free(stack->stack);
+	free(stack);
 	if (stack)
-		ft_free_stack(stack);
+		return (-1);
+		// ft_free_stack(stack);
 	return (-1);
 }
 

@@ -1,0 +1,5 @@
+- Error si doublon dans la stack
+- rien afficher si dans l'ordre ok 
+
+cas a pb:
+./push_swap "12345 -12 -2435 2147483647" ok
