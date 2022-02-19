@@ -16,3 +16,13 @@ segfault
 
 - max 12 instructions for 5 random numbers sir
 -> sort.c:66 chose the most easy way RA or RRA
+
+
+
+PBBBBBBBS
+
+./push_swap 5 4 3 2 1 -4444444444444444444444444444444444444444 OK leaks a voir 
+-> tri
+
+./push_swap -5 +8
+->error

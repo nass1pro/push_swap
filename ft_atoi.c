@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/07 09:52:05 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 19:36:36 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/19 19:51:37 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	ft_neg(const char *str)
 	return (n);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			i;
 	int			n;
@@ -69,9 +69,9 @@ int	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - 48);
 		i++;
 		if (nb * n > 2147483647)
-			return (-1);
+			return ( 2147483648);
 		if (nb * n < -2147483648)
-			return (0);
+			return (-2147483649);
 	}
 	return (nb * n);
 }

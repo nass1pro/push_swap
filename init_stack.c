@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 22:11:26 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/19 19:57:10 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,29 @@ t_st	*ft_init_stack_list(char **a, int ac)
 {
 	int		i;
 	t_st	*stack_a;
+	long	max;
 
 	i = 1;
 	stack_a = NULL;
 	stack_a = ft_alloc_stack(stack_a, ac);
+	max = 0;
 	if (!stack_a)
 		return (NULL);
 	while (i <= ac - 1)
 	{
 		if (i == 1)
 		{
+			max = ft_atoi(a[i]);
 			stack_a->first = ft_atoi(a[i]);
+			if (max > 2147483647 || max < -2147483648)
+				return (NULL);
 		}
-		stack_a->stack[i - 1] = ft_atoi(a[i]);
+		max = ft_atoi(a[i]);
+		stack_a->first = ft_atoi(a[i]);
+		if (max > 2147483647 || max < -2147483648)
+		{
+			return (NULL);
+		}
 		i++;
 	}
 	stack_a->end = stack_a->stack[i - 1];
@@ -58,6 +68,8 @@ t_st	*ft_init_stack(char **lst)
 	while (i < len)
 	{
 		stack_a->stack[i] = ft_atoi(lst[i]);
+		if (stack_a->stack[i] > 2147483647 || stack_a->stack[i] < -2147483648)
+			return (NULL);
 		i++;
 	}
 	stack_a->first = stack_a->stack[0];

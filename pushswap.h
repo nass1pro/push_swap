@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:40 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 23:00:16 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/19 19:51:52 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_st
 	int		error;
 }	t_st;
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 char	**ft_split(char const *str, char charset);
 int		ft_free(char **lst, int *num);
 int		ft_free_lst(char **lst);

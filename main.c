@@ -6,7 +6,7 @@
 /*   By: nahaddac <nahaddac@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 10:59:19 by nahaddac          #+#    #+#             */
-/*   Updated: 2022/02/18 23:18:01 by nahaddac         ###   ########.fr       */
+/*   Updated: 2022/02/19 19:56:47 by nahaddac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int ac, char **av)
 			return (1); 
 		stack_a = verif_arg(av[1], stack_a);
 		if (!stack_a)
-			return (ft_write_error(NULL));
+			return (write(1,"Error\n", 6));
 	}
 	else
 	{
@@ -120,7 +120,7 @@ int	main(int ac, char **av)
 			return (write(1, "Error\n", 6));
 		stack_a = ft_init_stack_list(av, ac);
 		if (!stack_a)
-			return (-1);
+			return (write(1, "Error\n", 6));
 	}
 	if (ft_start(stack_a))
 		return (ft_write_error(stack_a));
