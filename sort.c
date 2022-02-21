@@ -12,6 +12,29 @@
 
 #include "pushswap.h"
 
+static int search_min(t_st *a)
+{
+	int i;
+	int min;
+	// int j;
+
+	min = 2147483647;
+	i = 0;
+	while(i < (int)a->len)
+	{
+		if (min > a->stack[i])
+			min = a->stack[i];
+		i++;
+	}
+	while (i)
+	{
+		if (min == a->stack[i])
+			return (i);
+		i--;
+	}
+	return 0;
+}
+
 void	ft_len_three(t_st *a)
 {
 	if (a->stack[0] > a->stack[1] && a->stack[1]
@@ -39,32 +62,17 @@ void	ft_len_three(t_st *a)
 		ft_swap_reverse_rotate_a(a);
 }
 
-static void	ft_five(t_st *a, t_st *b)
+static void ft_sort_short_len(t_st *a, t_st *b)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	j = 0;
-	while (b->stack[0] > a->stack[i] && i != a->len)
-		i++;
-	if (i == 0)
-		ft_swap_pa(a, b);
-	else if (i == a->len)
-	{
-		ft_swap_pa(a, b);
-		ft_swap_rotate_a(a);
-		return ;
-	}
-	else
-	{
-		j = i;
-		while (j--)
+	int i = 0;
+	
+	i = search_min(a);
+	if (i > 0)
+		while(i--)
+		{
 			ft_swap_rotate_a(a);
-		ft_swap_pa(a, b);
-		while (i-- >= 1)
-			ft_swap_reverse_rotate_a(a);
-	}
+		}
+	ft_swap_pb(b, a);
 }
 
 void	len_five(t_st *a, t_st *b)
@@ -72,15 +80,20 @@ void	len_five(t_st *a, t_st *b)
 	int	len;
 
 	len = a->len;
-	if (a->len > 4)
-		ft_swap_pb(b, a);
-	ft_swap_pb(b, a);
-	if (b->stack[0] > b->stack[1])
-		ft_swap_sb(b);
-	ft_len_three(a);
-	ft_five(a, b);
+	if (len == 4)
+	{
+		ft_sort_short_len(a, b);
+		ft_len_three(a);
+		ft_swap_pa(a, b);
+	}
 	if (len == 5)
-		ft_five(a, b);
+	{
+		ft_sort_short_len(a, b);
+		ft_sort_short_len(a, b);
+		ft_len_three(a);
+		ft_swap_pa(a, b);
+		ft_swap_pa(a, b);
+	}
 	free(a->stack);
 	free(b->stack);
 	free(a);

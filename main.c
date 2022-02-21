@@ -47,29 +47,29 @@ t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b)
 
 int	ft_start_short_len(t_st *stack_a)
 {
-	if (ft_verif_sort(stack_a) != 1)
+
+	if (ft_verif_sort(stack_a) == 1)
 	{
-		if (ft_verif_sort(stack_a) == 1)
-		{
-			free(stack_a->stack);
-			free(stack_a);
-			return (0);
-		}
-		if (stack_a->len_max == 2 && ft_verif_sort(stack_a) != 1)
-		{
-			ft_swap_sa(stack_a);
-			free(stack_a->stack);
-			free(stack_a);
-			return (0);
-		}
-		if (stack_a->len_max == 3 && ft_verif_sort(stack_a) != 1)
-		{
-			ft_len_three(stack_a);
-			free(stack_a->stack);
-			free(stack_a);
-			return (0);
-		}
+		free(stack_a->stack);
+		free(stack_a);
+		return (0);
 	}
+	if (stack_a->len_max == 2)
+	{
+		ft_swap_sa(stack_a);
+		free(stack_a->stack);
+		free(stack_a);
+		return (0);
+	}
+	if (stack_a->len_max == 3)
+	{
+
+		ft_len_three(stack_a);
+		free(stack_a->stack);
+		free(stack_a);
+		return (0);
+	}
+
 	return (0);
 }
 
@@ -78,8 +78,11 @@ int	ft_start(t_st *stack_a)
 	t_st	*stack_b;
 
 	stack_b = NULL;
-	if (ft_verif_sort(stack_a))
-		return (0);
+	// if (ft_verif_sort(stack_a) != 0)
+	// {
+	// 	return (0);
+	// }
+		
 	if (check_doublon(stack_a->stack, stack_a->len_max))
 			return (1);
 	if (stack_a->len_max < 4)
@@ -129,5 +132,6 @@ int	main(int ac, char **av)
 	}
 	if (ft_start(stack_a))
 		return (ft_write_error(stack_a));
+	
 	return (0);
 }

@@ -17,24 +17,26 @@ t_st	*ft_init_stack_list(char **a, int ac)
 	int		i;
 	t_st	*stack_a;
 	long	max;
+	int 	j;
 
 	i = 1;
 	stack_a = NULL;
 	stack_a = ft_alloc_stack(stack_a, ac);
 	max = 0;
+	j = 0;
 	if (!stack_a)
 		return (NULL);
 	while (i <= ac - 1)
 	{
 		max = ft_atoi(a[i]);
-		
-		stack_a->stack[i] = ft_atoi(a[i]);
+		stack_a->stack[i - 1] = (int)max;
 		if (max > 2147483647 || max < -2147483648)
 		{
 			return (NULL);
 		}
 		i++;
 	}
+	stack_a->first = stack_a->stack[0];
 	stack_a->end = stack_a->stack[i - 1];
 	stack_a->len = ac - 1;
 	stack_a->len_max = ac - 1;

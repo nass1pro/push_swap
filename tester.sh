@@ -23,3 +23,4 @@ echo ${TAB[*]} > values
 ARG=$(cat values);
 ./push_swap $ARG | wc -l
 ./push_swap $ARG | ./checker_Mac $ARG
+echo $ARG
