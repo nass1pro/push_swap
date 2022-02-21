@@ -26,15 +26,9 @@ t_st	*ft_init_stack_list(char **a, int ac)
 		return (NULL);
 	while (i <= ac - 1)
 	{
-		if (i == 1)
-		{
-			max = ft_atoi(a[i]);
-			stack_a->first = ft_atoi(a[i]);
-			if (max > 2147483647 || max < -2147483648)
-				return (NULL);
-		}
 		max = ft_atoi(a[i]);
-		stack_a->first = ft_atoi(a[i]);
+		
+		stack_a->stack[i] = ft_atoi(a[i]);
 		if (max > 2147483647 || max < -2147483648)
 		{
 			return (NULL);
