@@ -6,7 +6,7 @@ max=$1
 while ((i<$max))
 do
 	tester=1
-	RAND=$((1 + RANDOM % 3000))
+	RAND=$((1 + RANDOM % 30000))
 	for j in "${TAB[@]}"; do
 		if [[ $j == $RAND ]]
 		then

@@ -12,15 +12,14 @@
 
 #include "pushswap.h"
 
-static int search_min(t_st *a)
+static int	ft_search_min(t_st *a)
 {
-	int i;
-	int min;
-	// int j;
+	int	i;
+	int	min;
 
 	min = 2147483647;
 	i = 0;
-	while(i < (int)a->len)
+	while (i < (int)a->len)
 	{
 		if (min > a->stack[i])
 			min = a->stack[i];
@@ -65,13 +64,15 @@ void	ft_len_three(t_st *a)
 static void ft_sort_short_len(t_st *a, t_st *b)
 {
 	int i = 0;
+	(void)b;
 	
-	i = search_min(a);
-	if (i > 0)
+	i = ft_search_min(a);
+	if (i < (int)a->len_max / 2 || i == (int)a->len)
 		while(i--)
-		{
 			ft_swap_rotate_a(a);
-		}
+	else
+		while(i++ < (int)a->len)
+			ft_swap_reverse_rotate_a(a);
 	ft_swap_pb(b, a);
 }
 
@@ -94,6 +95,7 @@ void	len_five(t_st *a, t_st *b)
 		ft_swap_pa(a, b);
 		ft_swap_pa(a, b);
 	}
+	
 	free(a->stack);
 	free(b->stack);
 	free(a);

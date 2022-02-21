@@ -66,7 +66,10 @@ t_st	*ft_init_stack(char **lst)
 		stack_a->stack[i] = ft_atoi(lst[i]);
 		if (stack_a)
 		if (stack_a->stack[i] > 2147483647 || stack_a->stack[i] < -2147483648)
+		{
 			return (NULL);
+		}
+			
 		i++;
 	}
 	stack_a->first = stack_a->stack[0];
@@ -74,7 +77,7 @@ t_st	*ft_init_stack(char **lst)
 	stack_a->len = len;
 	stack_a->len_max = len;
 	stack_a->error = 0;
-	// stack_a->index = NULL;
+	stack_a->index = NULL;
 	return (stack_a);
 }
 
