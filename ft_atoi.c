@@ -69,7 +69,7 @@ long	ft_atoi(const char *str)
 		nb = nb * 10 + (str[i] - 48);
 		i++;
 		if (nb * n > 2147483647)
-			return ( 2147483648);
+			return (2147483648);
 		if (nb * n < -2147483648)
 			return (-2147483649);
 	}

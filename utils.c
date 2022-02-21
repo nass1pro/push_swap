@@ -54,7 +54,7 @@ int	ft_verif_sort(t_st *a)
 {
 	size_t	i;
 	size_t	v;
-	int count;
+	int		count;
 
 	i = 0;
 	v = 1;

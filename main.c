@@ -16,7 +16,7 @@
 
 static t_st	*verif_arg(char *av, t_st *stack)
 {
-	int 	i;
+	int		i;
 	char	**lst;
 
 	i = 0;
@@ -60,7 +60,6 @@ int	ft_start_short_len(t_st *stack_a)
 		free(stack_a);
 		return (0);
 	}
-
 	return (0);
 }
 
@@ -75,16 +74,11 @@ int	ft_start(t_st *stack_a)
 	{
 		return (0);
 	}
-		
 	if (stack_a->len_max < 4)
 		return (ft_start_short_len(stack_a));
 	stack_b = ft_init_stack_b(stack_a);
 	if (!stack_b)
-	{
-		free(stack_a->stack);
-		free(stack_a);
-		return (1);
-	}
+		return (ft_free_is_b(stack_a));
 	else if (stack_a->len_max <= 5)
 		len_five(stack_a, stack_b);
 	else
@@ -108,10 +102,10 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		if (av[1][0] == '\0')
-			return (1); 
+			return (1);
 		stack_a = verif_arg(av[1], stack_a);
 		if (!stack_a)
-			return (write(1,"Error\n", 6));
+			return (write(1, "Error\n", 6));
 	}
 	else
 	{

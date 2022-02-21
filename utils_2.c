@@ -31,25 +31,11 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-int	ft_free_lst(char **lst)
+int	ft_free_is_b(t_st *a)
 {
-	if (lst)
-	{
-		while (lst)
-		{
-			free(*lst);
-			lst++;
-		}
-	}
-	return (0);
-}
-
-int	ft_free(char **lst, int *num)
-{
-	if (num)
-		free(num);
-	ft_free_lst(lst);
-	return (-1);
+	free(a->stack);
+	free(a);
+	return (1);
 }
 
 int	ft_verif(char *str)

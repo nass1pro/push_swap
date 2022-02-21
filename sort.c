@@ -31,7 +31,7 @@ static int	ft_search_min(t_st *a)
 			return (i);
 		i--;
 	}
-	return 0;
+	return (0);
 }
 
 void	ft_len_three(t_st *a)
@@ -61,17 +61,17 @@ void	ft_len_three(t_st *a)
 		ft_swap_reverse_rotate_a(a);
 }
 
-static void ft_sort_short_len(t_st *a, t_st *b)
+static void	ft_sort_short_len(t_st *a, t_st *b)
 {
-	int i = 0;
-	(void)b;
-	
+	int	i;
+
+	i = 0;
 	i = ft_search_min(a);
 	if (i < (int)a->len_max / 2 || i == (int)a->len)
-		while(i--)
+		while (i--)
 			ft_swap_rotate_a(a);
 	else
-		while(i++ < (int)a->len)
+		while (i++ < (int)a->len)
 			ft_swap_reverse_rotate_a(a);
 	ft_swap_pb(b, a);
 }
@@ -95,7 +95,6 @@ void	len_five(t_st *a, t_st *b)
 		ft_swap_pa(a, b);
 		ft_swap_pa(a, b);
 	}
-	
 	free(a->stack);
 	free(b->stack);
 	free(a);

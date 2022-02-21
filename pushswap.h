@@ -31,8 +31,7 @@ typedef struct s_st
 
 long	ft_atoi(const char *str);
 char	**ft_split(char const *str, char charset);
-int		ft_free(char **lst, int *num);
-int		ft_free_lst(char **lst);
+int		ft_free_is_b(t_st *a);
 // utils 
 int		ft_verif(char *str);
 int		ft_verif_sort(t_st *a);
@@ -64,10 +63,6 @@ int		ft_swap_s(t_st *s);
 int		ft_swap_sa(t_st *a);
 int		ft_swap_sb(t_st *a);
 int		ft_swap_ss(t_st *a);
-//test.c delete file when close the project on intra 
-void	test_stack(t_st *stack_a, t_st *stack_b);
-void	visual_stack(t_st *stack_a, t_st *stack_b);
-void	test_five(t_st *a, t_st *b);
 // sort.c
 void	ft_len_three(t_st *a);
 void	len_five(t_st *a, t_st *b);
@@ -76,7 +71,6 @@ int		*ft_quick_sort(int *arr, int low, int higth);
 int		*ft_swap(int *stack, int i, int j);
 int		ft_radix(t_st *a, t_st *b);
 t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b);
-
-int check_doublon(int *s, size_t len);
-void ft_free_stack_end(t_st *a, t_st *b);
+int		check_doublon(int *s, size_t len);
+void	ft_free_stack_end(t_st *a, t_st *b);
 #endif

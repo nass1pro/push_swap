@@ -12,11 +12,11 @@
 
 #include "pushswap.h"
 
-int check_doublon(int *s, size_t len)
+int	check_doublon(int *s, size_t len)
 {
-	int i;
-	int j;
-	int count;
+	int	i;
+	int	j;
+	int	count;
 
 	i = 0;
 	while (i < (int)len - 1)
@@ -36,7 +36,7 @@ int check_doublon(int *s, size_t len)
 	return (0);
 }
 
-void ft_free_stack_end(t_st *a, t_st *b)
+void	ft_free_stack_end(t_st *a, t_st *b)
 {
 	free(a->stack);
 	free(a->stack_sorted);
