@@ -41,12 +41,6 @@ t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b)
 			stack_a->len_max - 1);
 	stack_a = ft_init_index_stack(stack_a);
 	ft_radix(stack_a, stack_b);
-	if (stack_a->error == 1)
-	{
-		ft_free_stack(stack_b);
-		ft_free_stack(stack_a);
-		return (NULL);
-	}
 	return (stack_a);
 }
 
@@ -127,7 +121,13 @@ int	main(int ac, char **av)
 		if (!stack_a)
 			return (write(1, "Error\n", 6));
 	}
-	if (ft_start(stack_a))
+	if (stack_a->len_max < 2)
+	{
+		free(stack_a->stack);
+		free(stack_a);
+		return (write(1, "Error\n", 6));
+	}
+	else if (ft_start(stack_a))
 		return (ft_write_error(stack_a));
 	return (0);
 }

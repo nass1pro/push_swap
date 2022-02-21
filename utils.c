@@ -59,12 +59,14 @@ int	ft_verif_sort(t_st *a)
 	i = 0;
 	v = 1;
 	count = 0;
-	while (v <= a->len_max)
+	while (v < a->len_max)
 	{
 		if (a->stack[i] < a->stack[v])
 			count++;
 		v++;
 		i++;
 	}
+	if (a->stack[i - 1] < a->stack[v - 1])
+		count++;
 	return (count);
 }
