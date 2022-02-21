@@ -64,6 +64,7 @@ t_st	*ft_init_stack(char **lst)
 	while (i < len)
 	{
 		stack_a->stack[i] = ft_atoi(lst[i]);
+		if (stack_a)
 		if (stack_a->stack[i] > 2147483647 || stack_a->stack[i] < -2147483648)
 			return (NULL);
 		i++;
