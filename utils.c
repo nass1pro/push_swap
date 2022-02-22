@@ -33,8 +33,6 @@ int	ft_write_error(t_st *stack)
 	write(1, "Error\n", 6);
 	free(stack->stack);
 	free(stack);
-	if (stack)
-		return (-1);
 	return (-1);
 }
 
@@ -59,6 +57,12 @@ int	ft_verif_sort(t_st *a)
 	i = 0;
 	v = 1;
 	count = 0;
+	if (a->len_max == 2)
+	{
+		if (a->stack[0] < a->stack[1])
+			return (2);
+		return (0);
+	}
 	while (v < a->len_max)
 	{
 		if (a->stack[i] < a->stack[v])

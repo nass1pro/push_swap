@@ -57,3 +57,26 @@ t_st	*ft_init_index_stack(t_st *s)
 	free(s->index);
 	return (s);
 }
+
+t_st	*ft_init_arg(t_st *stack_a, size_t len)
+{
+	stack_a->first = stack_a->stack[0];
+	stack_a->end = len;
+	stack_a->len = len;
+	stack_a->len_max = len;
+	stack_a->error = 0;
+	stack_a->index = NULL;
+	stack_a->stack_sorted = NULL;
+	return (stack_a);
+}
+
+t_st	*ft_init_arg_ac(t_st *stack_a, int ac, int i)
+{
+	stack_a->first = stack_a->stack[0];
+	stack_a->end = stack_a->stack[i - 1];
+	stack_a->len = ac - 1;
+	stack_a->len_max = ac - 1;
+	stack_a->stack_sorted = NULL;
+	stack_a->index = NULL;
+	return (stack_a);
+}

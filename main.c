@@ -12,8 +12,6 @@
 
 #include "pushswap.h"
 
-#include <stdio.h>
-
 static t_st	*verif_arg(char *av, t_st *stack)
 {
 	int		i;
@@ -25,7 +23,14 @@ static t_st	*verif_arg(char *av, t_st *stack)
 	lst = ft_split(av, ' ');
 	if (!lst)
 		return (NULL);
-	stack = ft_init_stack(lst);
+	stack = ft_init_stack(lst, stack);
+	if (!stack)
+	{
+		while (lst[i] != NULL)
+			free(lst[i++]);
+		free(lst);
+		return (NULL);
+	}
 	while (i < (int)stack->len_max)
 		free(lst[i++]);
 	free(lst);
@@ -72,6 +77,8 @@ int	ft_start(t_st *stack_a)
 		return (1);
 	if (ft_verif_sort(stack_a) == (int)stack_a->len_max)
 	{
+		free(stack_a->stack);
+		free(stack_a);
 		return (0);
 	}
 	if (stack_a->len_max < 4)
@@ -112,7 +119,7 @@ int	main(int ac, char **av)
 			return (1);
 	}
 	if (stack_a->len_max < 2)
-		return (ft_one_no_start(stack_a));
+		return (ft_one_no_start(stack_a, av[1][0]));
 	else if (ft_start(stack_a))
 		return (ft_write_error(stack_a));
 	return (0);

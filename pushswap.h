@@ -41,12 +41,14 @@ int		ft_multi_arg_verif(int ac, char **av);
 int		ft_write_error(t_st *stack);
 // init_stack.c
 t_st	*ft_init_stack_b(t_st *stack_a);
-t_st	*ft_init_stack(char **lst);
-t_st	*ft_init_stack_list(char **a, int ac);
+t_st	*ft_init_stack(char **lst, t_st *stack_a);
+t_st	*ft_init_stack_list(char **a, int ac, t_st *stack_a);
 void	ft_free_stack(t_st *a);
 t_st	*ft_alloc_stack(t_st *st, int len);
 t_st	*ft_init_sort_stack(t_st *s);
 t_st	*ft_init_index_stack(t_st *s);
+t_st	*ft_init_arg_ac(t_st *stack_a, int ac, int i);
+t_st	*ft_init_arg(t_st *stack_a, size_t len);
 // swap.c
 int		ft_swap_rotate(t_st *s);
 int		ft_swap_rotate_a(t_st *s);
@@ -73,5 +75,5 @@ t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b);
 int		check_doublon(int *s, size_t len);
 void	ft_free_stack_end(t_st *a, t_st *b);
 t_st	*ft_elmain(int ac, char **av, t_st *stack_a);
-int 	ft_one_no_start(t_st *stack_a);
+int		ft_one_no_start(t_st *stack_a, char c);
 #endif

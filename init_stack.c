@@ -12,18 +12,14 @@
 
 #include "pushswap.h"
 
-t_st	*ft_init_stack_list(char **a, int ac)
+t_st	*ft_init_stack_list(char **a, int ac, t_st *stack_a)
 {
 	int		i;
-	t_st	*stack_a;
 	long	max;
-	int		j;
 
 	i = 1;
-	stack_a = NULL;
 	stack_a = ft_alloc_stack(stack_a, ac);
 	max = 0;
-	j = 0;
 	if (!stack_a)
 		return (NULL);
 	while (i <= ac - 1)
@@ -32,30 +28,23 @@ t_st	*ft_init_stack_list(char **a, int ac)
 		stack_a->stack[i - 1] = (int)max;
 		if (max > 2147483647 || max < -2147483648)
 		{
+			free(stack_a->stack);
+			free(stack_a);
 			return (NULL);
 		}
 		i++;
 	}
-	stack_a->first = stack_a->stack[0];
-	stack_a->end = stack_a->stack[i - 1];
-	stack_a->len = ac - 1;
-	stack_a->len_max = ac - 1;
-	stack_a->stack_sorted = NULL;
-	stack_a->index = NULL;
+	stack_a = ft_init_arg_ac(stack_a, ac, i);
 	return (stack_a);
 }
 
-t_st	*ft_init_stack(char **lst)
+t_st	*ft_init_stack(char **lst, t_st *stack_a)
 {
 	size_t	i;
 	size_t	len;
-	t_st	*stack_a;
 	long	max;
 
-	i = 0;
 	len = 0;
-	max = 0;
-	stack_a = NULL;
 	while (lst[len] != NULL)
 		len++;
 	stack_a = ft_alloc_stack(stack_a, len + 1);
@@ -68,16 +57,13 @@ t_st	*ft_init_stack(char **lst)
 		stack_a->stack[i] = max;
 		if (max > 2147483647 || max < -2147483648)
 		{
+			free(stack_a->stack);
+			free(stack_a);
 			return (NULL);
 		}
 		i++;
 	}
-	stack_a->first = stack_a->stack[0];
-	stack_a->end = len;
-	stack_a->len = len;
-	stack_a->len_max = len;
-	stack_a->error = 0;
-	stack_a->index = NULL;
+	stack_a = ft_init_arg(stack_a, len);
 	return (stack_a);
 }
 
