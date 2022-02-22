@@ -93,9 +93,7 @@ int	ft_start(t_st *stack_a)
 int	main(int ac, char **av)
 {
 	t_st	*stack_a;
-	char	**lst;
 
-	lst = NULL;
 	stack_a = NULL;
 	if (ac < 2)
 		return (-1);
@@ -109,18 +107,12 @@ int	main(int ac, char **av)
 	}
 	else
 	{
-		if (ft_multi_arg_verif(ac, av) == -1)
-			return (write(1, "Error\n", 6));
-		stack_a = ft_init_stack_list(av, ac);
+		stack_a = ft_elmain(ac, av, stack_a);
 		if (!stack_a)
-			return (write(1, "Error\n", 6));
+			return (1);
 	}
 	if (stack_a->len_max < 2)
-	{
-		free(stack_a->stack);
-		free(stack_a);
-		return (write(1, "Error\n", 6));
-	}
+		return (ft_one_no_start(stack_a));
 	else if (ft_start(stack_a))
 		return (ft_write_error(stack_a));
 	return (0);

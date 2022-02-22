@@ -72,4 +72,6 @@ int		ft_radix(t_st *a, t_st *b);
 t_st	*ft_init_radix_sort(t_st *stack_a, t_st *stack_b);
 int		check_doublon(int *s, size_t len);
 void	ft_free_stack_end(t_st *a, t_st *b);
+t_st	*ft_elmain(int ac, char **av, t_st *stack_a);
+int 	ft_one_no_start(t_st *stack_a);
 #endif

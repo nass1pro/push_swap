@@ -44,3 +44,26 @@ void	ft_free_stack_end(t_st *a, t_st *b)
 	free(a);
 	free(b);
 }
+
+int		ft_one_no_start(t_st *stack_a)
+{
+	free(stack_a->stack);
+	free(stack_a);
+	return (write(1, "Error\n", 6));
+}
+
+t_st	*ft_elmain(int ac, char **av, t_st *stack_a)
+{
+	if (ft_multi_arg_verif(ac, av) == -1)
+	{
+			write(1, "Error\n", 6);
+			return (NULL);
+	}
+	stack_a = ft_init_stack_list(av, ac);
+	if (!stack_a)
+	{
+		write(1, "Error\n", 6);
+		return (NULL);
+	}
+	return (stack_a);
+}
